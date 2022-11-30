@@ -1,0 +1,9 @@
+.container {
+    background-color:#ffedc66b;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center
+
+}

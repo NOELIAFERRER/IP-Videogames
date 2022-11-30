@@ -1,0 +1,47 @@
+.container {
+    width: 100vw;
+    padding: 5px;
+    font-size: 10px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.inner {
+    width: 50vw;
+    padding: 5px;
+    font-size: 10px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+}
+
+.label {
+    width: 80px
+}
+
+.select {
+    padding: 5px;
+    display: flex;
+    flex-direction: column  
+}
+
+.error {
+    background-color: brown;
+}
+
+.btn {
+    width: 120px;
+    height: 40px;        
+    border-radius: 5px;
+    border-color: #FFD57A;
+    background-color: #FF4444;    
+    color: #FFEDC6;
+    font-size: 11px;
+    align-self: center;
+}
+

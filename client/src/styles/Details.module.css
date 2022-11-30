@@ -1,0 +1,36 @@
+.container {
+    background-color: rgb(209, 139, 26);
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 40vw;
+    height: 40vh;
+    display: flex;
+}
+
+.info{
+    width: 75vw;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.lines{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+}
+
+.list{
+    width: 30%;
+    display: flex;
+}

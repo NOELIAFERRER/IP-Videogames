@@ -1,0 +1,9 @@
+.landing {
+    background-image: url('./image1.jpg');
+    background-size:cover;
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color:antiquewhite
+}
