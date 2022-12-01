@@ -71,7 +71,8 @@ const rootReducer = (state = initialState, action) => {
         gameDetail: action.payload
       };
     case GET_GAMES_BY_GENRE:
-      const gamesFilterByGenre = state.allGames.filter(el => el.genres.includes(action.payload) ? el : {})
+      const gamesFilterByGenre = state.allGames.filter(el => el.genres.includes(action.payload))
+      console.log(state.allGames)
       console.log(gamesFilterByGenre)
       return {
         ...state,

@@ -43,13 +43,29 @@ const Home = () => {
 
     // console.log(allGenres)
 
+    // const onChangeHandler = (event) => {
+    //     event.target.value === 'genres' ?
+    //         dispatch(getGamesByGenre(event.target.value))
+    //         :
+    //         dispatch(getGamesFilter(event.target.value))
+    //     setCurrentPage(1);
+    //     console.log(event.target.value)
+    // }
+
+    //probando filtr x videogames existentes o agregados
     const onChangeHandler = (event) => {
-        event.target.value === 'genres' ?
-            dispatch(getGamesByGenre(event.target.value))
-            :
-            dispatch(getGamesFilter(event.target.value))
+        dispatch(getGamesFilter(event.target.value))
         setCurrentPage(1);
         console.log(event.target.value)
+        console.log(games)
+    }
+
+    //probando filtro x genero
+    const filterByGenreHandler = (event) => {
+        dispatch(getGamesByGenre(event.target.value))
+        setCurrentPage(1)
+        console.log(event.target.value)
+        console.log(games)
     }
 
     const sortHandler = (event) => {
@@ -91,7 +107,9 @@ const Home = () => {
                         <option name='high' id='hig' value='high' >MAYOR RATING</option>
                         <option name='low' id='low' value='low'>MENOR RATING</option>
                     </select>
-                    <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => onChangeHandler(e)}>
+                    
+                    {/* <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => onChangeHandler(e)}> */}
+                    <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => filterByGenreHandler(e)}>
                         <option name='genres' id='gen' value='genres'>TODOS LOS GENEROS</option>
                         {
                             allGenres.map(el => <option value={`${el}`}>{el.toUpperCase()}</option>)
@@ -111,7 +129,10 @@ const Home = () => {
                                 key={game.id}
                                 image={game.image}
                                 name={game.name}
-                                genres={new Set(game.genres)}
+                                // genres={new Set(game.genres)}
+                                genres={game.genres}
+                            // genres= {game.genres.map((el, id) => el.name)}
+
                             />
                             {/* <Videogames /> */}
                         </Link>

@@ -6,7 +6,7 @@ const Game = ({ image, name, id, genres }) => {
     return (
         <div className={styles.container}>
             <div id='closeIcon' className={styles.boton}>
-                <button className={styles.btn}>X</button>
+                {/* <button className={styles.btn}>X</button> */}
             </div>
             <div>
                 <img className={styles.image} src={image} alt='portada del videojuego' />

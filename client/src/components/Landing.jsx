@@ -12,7 +12,7 @@ class Landing extends React.Component {
             <div className={styles.landing}>
                 <h3>Bienvenidos a Videogames Api</h3>
                 <NavLink to='/games'>
-                    <button>Home</button>
+                    <button className= {styles.btn}>INGRESAR</button>
                 </NavLink>
             </div>
         )

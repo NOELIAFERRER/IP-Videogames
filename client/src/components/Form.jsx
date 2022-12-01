@@ -148,7 +148,7 @@ const Form = ({ name, description, released, rating }) => {
                </select>
                     {/* <input type='text' id='gen' onChange={changeGenresHandler} value={input.genres}/> */}
                {/* <label htmlFor='add'>AGREGAR GENERO</label> */}
-               <input type="text" id='add' name='genres' onChange={changeAddHandler} value={input.genres} />
+               <input type="text" id='add' name='genres' onChange={changeHandler} value={input.genres} />
                {/* <input type='checkbox' id='add' name='add genres' onChange={changeCheckHandler} /> */}
                <div className={styles.select}>
                   <label htmlFor='pla'>PLATAFORMAS </label>
