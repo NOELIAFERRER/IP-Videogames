@@ -40,12 +40,15 @@ const Form = ({ name, description, released, rating }) => {
    const validateInput = (input) => {
       console.log(input.name)
       let errorForm = {}
-      if (input.name.length < 4 || typeof input.name !== "string") errorForm.name = 'Se debe ingresar un nombre válido'
-      if (input.description.length < 10 || typeof input.description !== 'string') errorForm.description = 'Se deben ingresar al menos 20 caracteres'
-
-      // : (!input.released) setError('Se debe ingresar fecha de lanzamiento')
-      // if(!input.rating) setError('Se debe ingresar una puntuación de rating')
-      // else{ setError('')}
+      if(input.name.length < 4 || typeof input.name !== "string") errorForm.name = 'Se debe ingresar un nombre válido'
+      if(input.description.length < 10 || typeof input.description !== 'string') errorForm.description = 'Se deben ingresar al menos 20 caracteres'
+      // const regExp = /^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/
+      // if(!input.released.match(regExp)) errorForm.released = 'Se debe ingresar YYYY-MM-DD'
+      const dateSplited = input.released.split('-')
+      console.log(input.released)
+      console.log(dateSplited)
+      if(input.released.length < 1|| isNaN(dateSplited[0]) || isNaN(dateSplited[1]) || isNaN(dateSplited[2])) errorForm.released = 'Se debe ingresar una fecha con formato YYYY-MM-DD'
+      if(!input.rating.length || isNaN(input.rating)) errorForm.rating = 'Se debe ingresar un número entero del 1 al 5'
       console.log(error)
       return errorForm;
    }
@@ -74,16 +77,20 @@ const Form = ({ name, description, released, rating }) => {
    const changeGenresHandler = (event) => {
       setInput({
          ...input,
-         [event.target.name]: [...new Set([...input.genres, event.target.value])]
+         // [event.target.name]: [...new Set([...input.genres, event.target.value])] pruebo haciendo un array!!
+         [event.target.name]: [...input.genres, event.target.value]
       })
+      console.log(event.target.value)
+      console.log(input)
       validateSelect(input.genres)
    }
 
    const changePlatformsHandler = (event) => {
       setInput({
          ...input,
-         [event.target.name]: [...new Set([...input.platforms, event.target.value])]
+         [event.target.name]: [...input.platforms, event.target.value]
       })
+      console.log(input)
       validateSelect(input.platforms)
    }
 
@@ -126,11 +133,15 @@ const Form = ({ name, description, released, rating }) => {
             </div>
             <div className={styles.inner}>
                <label htmlFor=''>FECHA DE LANZAMIENTO</label>
-               <input type='text' id='rel' name='released' placeholder='dd/mm/aa' onChange={changeHandler} value={input.released} />
+               <input type='text' datepicker="true" datepicker_format="YYYY-MM-YY"
+               // data-date-format='YYYY-MM-DD' 
+               id='rel' name='released' placeholder='YYYY-MM-DD' onChange={changeHandler} value={input.released} />
+           {error.released && <p>{error.released}</p>}
             </div>
             <div className={styles.inner}>
                <label htmlFor='rat'>RATING</label>
                <input type='text' id='rat' name='rating' onChange={changeHandler} value={input.rating} />
+               {error.rating && <p>{error.rating}</p>}
             </div>
 
             <div className={styles.inner}>
@@ -141,7 +152,7 @@ const Form = ({ name, description, released, rating }) => {
             <div className={styles.select}>
                <label htmlFor='gen'>GENEROS </label>
 
-               <select name='genres' id='gen' onChange={changeGenresHandler} multiple={true} defaultValue='[]'>
+               <select name='genres' id='gen' onChange={changeGenresHandler} multiple={true}>
                   {
                      allGenres.map(el => <option value={`${el}`}>{el}</option>)
                   }
@@ -152,7 +163,7 @@ const Form = ({ name, description, released, rating }) => {
                {/* <input type='checkbox' id='add' name='add genres' onChange={changeCheckHandler} /> */}
                <div className={styles.select}>
                   <label htmlFor='pla'>PLATAFORMAS </label>
-                  <select name='platforms' id='pla' onChange={changePlatformsHandler} multiple={true} defaultValue='[]'>
+                  <select name='platforms' id='pla' onChange={changePlatformsHandler} multiple={true}>
                      {
                         allPlatforms.map(el => <option value={`${el}`}>{el}</option>)
                      }

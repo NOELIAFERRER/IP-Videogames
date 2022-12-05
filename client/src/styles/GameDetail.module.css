@@ -1,13 +1,17 @@
 .container {
-    width: 40px;
+    background-image: url('./home-background.jpg');
+    /* margin: 200px 0px; */
+    background-size: contain;
+ 
 }
 
 .game{
     width: 100vw;
     height: 100vh;
-    padding: 3%;
+    /* padding: 3%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }

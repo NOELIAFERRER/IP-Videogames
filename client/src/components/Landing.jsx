@@ -10,7 +10,7 @@ class Landing extends React.Component {
     render() {
         return (
             <div className={styles.landing}>
-                <h3>Bienvenidos a Videogames Api</h3>
+                {/* <h3>VIDEOGAMES LAND</h3> */}
                 <NavLink to='/games'>
                     <button className= {styles.btn}>INGRESAR</button>
                 </NavLink>

@@ -18,8 +18,8 @@ const GameDetail = (props) => {
 
     return (
         <div className={styles.container}>
-            <h3>Esto es game details</h3>
-            <p>{gameId}</p>
+            {/* <h3>Esto es game details</h3>
+            <p>{gameId}</p> */}
             <div className={styles.game}>
             {/* { gameDetail.length ?  */}
                 <Details 

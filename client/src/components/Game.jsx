@@ -1,19 +1,19 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Game.module.css'
 
 const Game = ({ image, name, id, genres }) => {
     return (
-        <div className={styles.container}>
-            <div id='closeIcon' className={styles.boton}>
-                {/* <button className={styles.btn}>X</button> */}
-            </div>
+        <div className={styles.container}>       
             <div>
+                {/* <Link to={`/games/details/${id}`}> */}
                 <img className={styles.image} src={image} alt='portada del videojuego' />
+                {/* </Link> */}
             </div>
             <div className={styles.titles}>
                 <p>
-                    <NavLink to={`/games/details/${id}`}>{name}</NavLink>
+                    {name} 
+                    {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
                 </p>
                 <p>{genres}</p>
             </div>          

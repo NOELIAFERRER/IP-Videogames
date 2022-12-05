@@ -89,15 +89,15 @@ const rootReducer = (state = initialState, action) => {
         games: gamesFiltered
       };
     case SORT_GAMES:
-      const gamesSorted = action.payload === 'ascendent' ?
-        state.allGames.sort((a, b) => {
+      const gamesSorted = action.payload === 'ascendent' 
+        ? state.allGames.sort((a, b) => {
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
           return 0;
         })
         : state.allGames.sort((a, b) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
-          if (a.name.toLowerCase() > b.name.toLowerCase) return -1
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
           return 0;
         })
       console.log(gamesSorted)
