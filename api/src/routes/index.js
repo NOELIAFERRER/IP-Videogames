@@ -11,5 +11,8 @@ const router = Router();
 router.use('/videogames', videoGameRouter);
 router.use('/genres', genreRouter);
 
+//PRUEBA PARA ENVIAR EMAIL
+// router.use('/email', emailRouter);
+
 
 module.exports = router;

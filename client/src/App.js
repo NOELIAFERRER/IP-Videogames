@@ -7,6 +7,7 @@ import GameDetail from './components/GameDetail';
 import { Route } from 'react-router-dom';
 import Game from './components/Game';
 // import Details from './components/Details';
+import { Email } from './components/Email';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       <Route path='/games/post'>
         <Form />
       </Route>
+
+      {/* PRUEBA EMAIL */}
+      <Route path='/email'> <Email /></Route>
       <Route
         path='/games/details/:id'
         render={(match) => <GameDetail match={match}/>}
