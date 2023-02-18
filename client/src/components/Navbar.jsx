@@ -32,7 +32,7 @@ const Navbar = () => {
                         <button className={styles.navigate}>HOME</button>
                     </Link>
                     <Link to='/games/post'>
-                        <button className={styles.navigate}>FORM</button>
+                        <button className={styles.navigate}>CREATE</button>
                     </Link>
                     {/* <NavLink activeClassName={styles.sections} to='/games'>Home</NavLink> */}
                     {/* <NavLink activeClassName={styles.sections} to='/games/post'>Form</NavLink> */}
