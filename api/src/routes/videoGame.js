@@ -6,7 +6,7 @@ const { getAllGames,
   getApiGameById,
   getDbGames,
   addGame
-} = require('./controllersVideoGame');
+} = require('../controllers/controllersVideoGame');
 
 const videogameRouter = Router();
 

@@ -23,7 +23,9 @@ class Videogames extends React.Component {
                             key={game.id}
                             image={game.image}
                             name={game.name}
-                            genres={game.genres.map((genre, key) =>  genre).join(' | ')}
+                            // genres={game.genres.map((genre, key) =>  genre).join(' | ')}
+                            genres={game.genres.map((genre, key) =>  genre)}
+
                         />
                     // </Link>
                 )

@@ -6,19 +6,19 @@ const { RAWG_APIKEY } = process.env;
 
 const getApiGames = async (name) => {
   let apiGames = [];
-  for (let i = 1; i < 2; i++) {
-    let apiData = await axios.get(`https://api.rawg.io/api/games?key=${RAWG_APIKEY}&page=${i}`)
+  for (let i = 1; i < 3; i++) {
+    let apiData = await axios.get(`https://api.rawg.io/api/games?key=${RAWG_APIKEY}&page=${i}`)   
     let apiGame = apiData.data.results.map(game => {
       return {
         id: game.id,
         image: game.background_image,
         name: game.name,
         released: game.released,
-        rating: game.rating,
-        platforms: game.platforms && game.platforms.map(p => p.platform.name),
-        genres: game.genres && game.genres.map(g => g.name).filter(g => g !== '').join(' | ')
-        // platforms: game.platforms && game.platforms.map(plat => plat.platform.name).filter(plat => plat !== '').join(' | '), // agregué para optimizar la búsqueda
-        // genres: game.genres && game.genres.map(game => game.name).filter(game => game !== '').join(' | ')
+        rating: game.rating,              
+        // platforms: game.platforms?.map(p => p.platform.name).filter(p => p !== '').join(' | '), 
+        platforms: game.platforms?.map(p => p.platform.name).filter(p => p !== ''), 
+        // genres: game.genres?.map(g => g.name).filter(g => g !== '').join(' | ')
+        genres: game.genres?.map(g => g.name).filter(g => g !== '')
       }
     })
     apiGames = [...apiGames, ...apiGame]
@@ -49,9 +49,9 @@ const getDbGames = async () => {
       released: g.released,
       rating: g.rating,   
       // platforms: g.platforms,
-      genres: g.genres.map(g => g.name).filter(g => g !== '').join(' | '),
-      platforms: g.platforms.map(p => p)
-      
+      // genres: g.genres.map(g => g.name).filter(g => g !== '').join(' | '),
+      genres: g.genres.map(g => g.name).filter(g => g !== ''),
+      platforms: g.platforms.map(p => p).filter(p => p !== '')      
     }
  })    
   console.log(dbGamesName)
@@ -219,11 +219,13 @@ const getApiGameById = async (id) => {
       return {
         image: result.background_image,
         name: result.name,
-        genres: result.genres.map(genre => genre.name).join(' | '), // agregué el .join
+        // genres: result.genres.map(genre => genre.name).join(' | '), 
+        //traigo sólo el array con el nombre de los géneros para luego mapearlos en el front
+        genres: result.genres.map(g => g.name),
         description: result.description.replace(/<[^>]*>?/g, ''),
         released: result.released,
         rating: result.rating,
-        platforms: result.platforms.map(plat => plat.platform.name).join(' | ') // agregué el .join
+        platforms: result.platforms.map(plat => plat.platform.name)
       }
     }
   }
@@ -265,7 +267,7 @@ const addGame = async (image, name, description, released, rating, genres, platf
  
   include: [
     {model: Genre, attributes: ['name'], through: {attributes: []}},
-    // {model: Platform, attributes: ['name'], through: {attributes: []}}
+    {model: Platform, attributes: ['name'], through: {attributes: []}}
   ]
 })
   // {

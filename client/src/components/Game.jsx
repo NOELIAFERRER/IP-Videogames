@@ -1,25 +1,32 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import styles from '../styles/Game.module.css'
+import { Link } from "react-router-dom";
+import styles from "../styles/Game.module.css";
 
 const Game = ({ image, name, id, genres }) => {
-    return (
-        <div className={styles.container}>       
-            <div>
-                {/* <Link to={`/games/details/${id}`}> */}
-                <img className={styles.image} src={image} alt='portada del videojuego' />
-                {/* </Link> */}
-            </div>
-            <div className={styles.titles}>
-                <p>
-                    {name} 
-                    {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
-                </p>
-                <p>{genres}</p>
-            </div>          
-        </div>
-    )
-}
+  return (
+    <div className={styles.container}>
+      <div>
+        {/* <Link to={`/games/details/${id}`}> */}
+        <img
+          className={styles.image}
+          src={image}
+          alt="portada del videojuego"
+        />
+        {/* </Link> */}
+      </div>
+      <div className={styles.titles}>
+        <p>
+          {name}
+          {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
+        </p>
+        {/* <p>{genres}</p> */}
+        {genres?.map((g) => (
+          <p> {g} </p>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Game;
 
@@ -58,4 +65,3 @@ export default Game;
 // }
 
 // export default Game;
-

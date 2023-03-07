@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import {
     getAllGames,
-    getGenres,
+    // getGenres,
     getGamesByGenre,
     getGamesFilter,
     sortGames,
@@ -36,7 +36,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getAllGames())
-        dispatch(getGenres())
+        // dispatch(getGenres())
         // dispatch(sortGames())
     }, [dispatch])
 
