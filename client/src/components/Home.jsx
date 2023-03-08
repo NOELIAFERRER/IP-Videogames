@@ -10,7 +10,7 @@ import {
     sortGames,
     sortGamesByRating
 } from "../redux/actions";
-import Videogames from './Videogames';
+// import Videogames from './Videogames';
 import Game from './Game';
 import Pagination from './Pagination';
 import styles from '../styles/Home.module.css'
@@ -43,23 +43,11 @@ const Home = () => {
     });
 
     // const [select, setSelect] = useState('');
-
     useEffect(() => {
        dispatch(getAllGames());
        console.log('indexFirstGame', indexFirstGame)
        console.log('currentGames', currentGames)
       }, [dispatch]);
-
-
-    // console.log(allGenres)
-
-    // const onChangeHandler = (event) => {
-    //     event.target.value === 'genres'        
-    //         ? dispatch(getGamesByGenre(event.target.value))
-    //         : dispatch(getGamesFilter(event.target.value))
-    //     setCurrentPage(1);
-    //     console.log('event.target.value:',event.target.value)
-    // }
 
     const genreHandler = (event) => {
         event.preventDefault();
@@ -74,22 +62,6 @@ const Home = () => {
         // setSelect(games)
         setCurrentPage(1);        
     }
-
-    //probando filtr x videogames existentes o agregados
-    // const onChangeHandler = (event) => {
-    //     dispatch(getGamesFilter(event.target.value))
-    //     setCurrentPage(1);
-    //     console.log(event.target.value)
-    //     console.log(games)
-    // }
-
-    //probando filtro x genero
-    // const filterByGenreHandler = (event) => {
-    //     dispatch(getGamesByGenre(event.target.value))
-    //     setCurrentPage(1)
-    //     console.log(event.target.value)
-    //     console.log(games)
-    // }
 
     const sortHandler = (event) => {
         event.preventDefault();
@@ -150,7 +122,6 @@ const Home = () => {
                 <br />
                 <div className={styles.games}>
 
-                    {/* {currentGames.map((game, key) => */}
                     {currentGames.map((game, key) =>
 
                         <Link to={`/games/details/${game.id}`}>
@@ -169,88 +140,4 @@ const Home = () => {
     )
 }
 export default Home;
-
-    // const games = useSelector((state) => state.games);
-
-    // const [allGames, setAllGames] = useState(games);
-    // const [items, setItems] = useState([...games].splice(0, gamesPerPage));
-    // console.log(items)
-    // const [currentPage, setCurrentPage] = useState(0);
-
-    // const nextHandler = () => {
-    //     const totalGames = allGames.length;
-    //     const nextPage = currentPage + 1;
-    //     const firstIndex = nextPage * gamesPerPage;
-
-    //     if (firstIndex === totalGames) return;
-    //     setItems([...allGames].splice(0, gamesPerPage))
-    //     setCurrentPage(nextPage);
-    // }
-
-    // const prevHandler = () => {
-    //     const prevPage = currentPage - 1;
-
-    //     if (prevPage < 0) return;
-    //     const firstIndex = prevPage * gamesPerPage;
-    //     setItems([...allGames].splice(firstIndex, gamesPerPage))
-    //     setCurrentPage(prevPage)
-    // }
-
-//     return (
-//         <div>
-//             <h4>Esto es el home</h4>
-
-//             <div>
-//                 <select name='sort' id='sor' value='sort'>
-//                     <option name='ascendent' id='asc' value='ascendent'>ASCENDENTE</option>
-//                     <option name='descendent' id='des' value='descendent'>DESCENDENTE</option>
-//                 </select>
-
-//                 <select name='filter' id='fil'>
-//                     <option id='gen' value='genres'>GENRES</option>
-//                     <option id='exi' value='exist'>EXISTE</option>
-//                     <option id='add' value='added'>AGREGADO</option>
-//                 </select>
-//             </div>
-//             <br />
-//             <Videogames />
-
-//         </div>
-//     )
-// }
-// export default Home;
-
-// export default function Home({name, image, genres}) {
-//     const dispatch = useDispatch();
-//     const games = useSelector(state => state.games);
-//     console.log(games)
-
-//     useEffect(() => {
-//         dispatch(getAllGames())
-//     }, [dispatch])
-
-//     // if (games) {
-//         return (
-//             <div>
-//                 <h2>esto es home</h2>
-//                 {games.map(game =>
-//                     <Game
-//                         id={game.id}
-//                         image={game.image}
-//                         name={game.name}
-//                         genres={game.genres}
-//                     />
-//                 )}
-//             </div>
-//         )
-//     // } else {
-//     //   return (
-//     //      <div>
-//     //         <h3>Loading</h3>
-//     //      </div>
-//     //   )
-//     // }
-// }
-
-// export default Home;
 
