@@ -1,0 +1,28 @@
+.selectors {
+    width: 15vw;
+  }
+  
+
+  .bars {
+    width: 140px;
+    height: 44px;
+    padding: 3%;
+    margin: 10px 2px 2px 2px;
+  
+    border-radius: 17px;
+    background: linear-gradient(145deg, #ff4947, #e63d3b);
+    box-shadow: 5px 5px 10px #78201f, -5px -5px 10px #301313;
+    transition: ease-out 0.5s;
+    cursor: pointer;
+    color: black;
+    font-size: 12px;
+    font-family: Helvetica;
+  }
+  
+  .bars:hover {
+    border-radius: 17px;
+    background: linear-gradient(315deg, #352929, #111111);
+    box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
+    color: #FFEDC6; 
+    font-style: bold;
+  }

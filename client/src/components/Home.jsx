@@ -11,8 +11,9 @@ import {
     sortGamesByRating
 } from "../redux/actions";
 // import Videogames from './Videogames';
-import Game from './Game';
 import Pagination from './Pagination';
+import Functions from './Functions';
+import Game from './Game';
 import styles from '../styles/Home.module.css'
 
 
@@ -20,69 +21,76 @@ const Home = () => {
 
     const games = useSelector(state => state.games)
     const allGames = useSelector(state => state.allGames)
-    // const allGenres = useSelector(state => state.genres)
     const dispatch = useDispatch()
 
+    //el total de cards a mostrarse x página es de 15
     const [currentPage, setCurrentPage] = useState(1);
     const [gamesXPage, setGamesXPage] = useState(15);
     const indexLastGame = currentPage * gamesXPage;
     const indexFirstGame = indexLastGame - gamesXPage;
-    const currentGames = games.slice(indexFirstGame, indexLastGame);
-    // const [currentGames, setCurrentGames] = useState([games.slice(indexFirstGame, indexLastGame)])
+    // const currentGames = games.slice(indexFirstGame, indexLastGame);
+    const currentGames = games.slice(0, 15);
+    const currentGamess = games.slice(16, 30)
+ 
 
     const paging = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
-    const allGen = allGames.map((g) => g.genres).flat();
-    //   Elimino los valores repetidos y ordeno alfabéticamente
-    const allGenres = [...new Set(allGen)].sort((a, b) => {
-      if (a.toLowerCase() > b.toLowerCase()) return 1;
-      if (a.toLowerCase() < b.toLowerCase()) return -1;
-      else return 0;
-    });
+    // const allGen = allGames.map((g) => g.genres).flat();
+    // //   Elimino los valores repetidos y ordeno alfabéticamente
+    // const allGenres = [...new Set(allGen)].sort((a, b) => {
+    //   if (a.toLowerCase() > b.toLowerCase()) return 1;
+    //   if (a.toLowerCase() < b.toLowerCase()) return -1;
+    //   else return 0;
+    // });
 
-    // const [select, setSelect] = useState('');
+    const [select, setSelect] = useState({games});
+    
+
+    // const genreHandler = (event) => {
+    //     event.preventDefault();
+    //     dispatch(getGamesByGenre(event.target.value))
+    //     // setSelect(games)
+    //     setCurrentPage(1);        
+    // }
+
+    // const filterHandler = (event) => {
+    //     event.preventDefault();
+    //     dispatch(getGamesFilter(event.target.value))
+    //     // setSelect(games)
+    //     setCurrentPage(1);        
+    // }
+
+    // const sortHandler = (event) => {
+    //     event.preventDefault();
+    //     dispatch(sortGames(event.target.value))
+    //     // setSelect(games)
+    //     setCurrentPage(1);
+    //     console.log('action.sort:',event.target.value)
+    //     console.log('games', games)
+    //     console.log('indexFirstGame', indexFirstGame)
+    //     console.log('currentGames', currentGames)
+    //     console.log('currentGamess:', currentGamess)
+
+    // }
+    // // console.log(games)
+
+    // const ratingHandler = (event) => {
+    //     event.preventDefault();
+    //     dispatch(sortGamesByRating(event.target.value))
+    //     setCurrentPage(1);
+    //     // setSelect(games);
+    //     console.log(event.target.value)
+    //     console.log(games)
+    // }
+
     useEffect(() => {
-       dispatch(getAllGames());
-       console.log('indexFirstGame', indexFirstGame)
-       console.log('currentGames', currentGames)
-      }, [dispatch]);
-
-    const genreHandler = (event) => {
-        event.preventDefault();
-        dispatch(getGamesByGenre(event.target.value))
-        // setSelect(games)
-        setCurrentPage(1);        
-    }
-
-    const filterHandler = (event) => {
-        event.preventDefault();
-        dispatch(getGamesFilter(event.target.value))
-        // setSelect(games)
-        setCurrentPage(1);        
-    }
-
-    const sortHandler = (event) => {
-        event.preventDefault();
-        dispatch(sortGames(event.target.value))
-        // setSelect(games)
-        setCurrentPage(1);
-        console.log('action.sort:',event.target.value)
-        console.log('games', games)
+        dispatch(getAllGames());
         console.log('indexFirstGame', indexFirstGame)
-       console.log('currentGames', currentGames)
-    }
-    // console.log(games)
-
-    const ratingHandler = (event) => {
-        event.preventDefault();
-        dispatch(sortGamesByRating(event.target.value))
-        setCurrentPage(1);
-        // setSelect(games);
-        console.log(event.target.value)
-        console.log(games)
-    }
+        console.log('currentGames', currentGames)
+        console.log('currentGamess:', currentGamess)
+       }, [dispatch]);
 
     return (
         <div className={styles.container}>
@@ -94,7 +102,13 @@ const Home = () => {
                 />
             </div>
             <div className={styles.home}>
-                <div className={styles.selectors}>                
+
+                <div className={styles.selectors}>
+                <Functions setCurrentPage={setCurrentPage}/>                
+                </div>
+
+
+                {/* <div className={styles.selectors}>                
                     <select className={styles.bars} name='sort' onChange={(e) => sortHandler(e)}>
                         <option name='SORT A-Z' value='no order' >SORT by NAME</option>
                         <option name='ascendent' value='ascendent' >A-Z</option>
@@ -108,7 +122,7 @@ const Home = () => {
                     </select>
 
                     <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => genreHandler(e)}>
-                        {/* <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => filterByGenreHandler(e)}> */}
+                       
                         <option name='genres' id='gen' value='genres'>TODOS LOS GENEROS</option>
                         {
                             allGenres.map(el => <option value={`${el}`}>{el.toUpperCase()}</option>)
@@ -118,7 +132,8 @@ const Home = () => {
                         <option name='gameExist' id='exi' value='gameExist'>VIDEOGAMES EXISTENTES</option>
                         <option name='gameAd' id='add' value='gameAd'>VIDEOGAMES AGREGADOS</option>
                     </select>
-                </div>
+                </div> */}
+                
                 <br />
                 <div className={styles.games}>
 

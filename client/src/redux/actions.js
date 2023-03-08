@@ -9,7 +9,7 @@ export const SORT_GAMES = 'SORT_GAMES';
 export const SORT_GAMES_BY_RATING = 'SORT_GAMES_BY_RATING';
 export const GET_GAMES_BY_GENRE = 'GET_GAMES_BY_GENRE'
 // export const GET_GAMES_BY_STATUS = 'GET_GAMES_BY_STATUS';
-export const GET_GAMES_FILTER = 'GET_GAMES_FILTER';
+export const FILTER_GAMES = 'FILTER_GAMES';
 export const ADD_GAME = 'ADD_GAME';
 
 export const getAllGames = () => {
@@ -174,11 +174,11 @@ export const getGamesByGenre = (payload) => {
   }
 }
 
-export const getGamesFilter = (payload) => {
+export const filterGames = (payload) => {
   return (dispatch) => {
     try {
       dispatch({
-        type: GET_GAMES_FILTER,
+        type: FILTER_GAMES,
         payload
       })
 

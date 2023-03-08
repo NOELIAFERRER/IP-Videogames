@@ -16,9 +16,9 @@
   align-items: flex-start;
   justify-content: center;
 }
-.selectors {
+/* .selectors {
   width: 15vw;
-}
+} */
 
 .games {
   background-color: #ffedc63b;
@@ -32,7 +32,7 @@
   justify-content: center;
 }
 
-.bars {
+/* .bars {
   width: 140px;
   height: 44px;
   padding: 3%;
@@ -54,7 +54,7 @@
   box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
   color: #FFEDC6; 
   font-style: bold;
-}
+} */
 
 /* .bars:active {
   transform: scale(0.9);

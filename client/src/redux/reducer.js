@@ -8,7 +8,7 @@ import {
   SORT_GAMES,
   SORT_GAMES_BY_RATING,
   GET_GAMES_BY_GENRE,
-  GET_GAMES_FILTER,
+  FILTER_GAMES,
   ADD_GAME
 } from "./actions"
 
@@ -78,7 +78,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         games: gamesFilterByGenre
       };
-    case GET_GAMES_FILTER:
+    case FILTER_GAMES:
       const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
       const gamesFiltered = action.payload === 'gameExist' 
       ? state.allGames.filter(game => regexExp.test(game.id) === false)
@@ -89,31 +89,24 @@ const rootReducer = (state = initialState, action) => {
         games: gamesFiltered
       };
     case SORT_GAMES:
-      const gamesSorted = action.payload === 'ascendent'       
-          ? state.allGames.sort((a, b) => {
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
-          return 0;
-        })
-        // : state.allGames.sort((a, b) => {
-        : action.payload === 'descendent'
-        ? state.allGames.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
-          return 0;
-        })
-        : gamesSorted = state.allGames
-      console.log('gamesSorted;',gamesSorted)
+         const gamesUpdated = [...state.games];
+         const gamesSorted = action.payload === 'ascendent'
+         ? gamesUpdated.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+         : action.payload === 'descendent'
+         ? gamesUpdated.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
+         : gamesSorted = gamesUpdated;
+    
       return {
         ...state,
         games: gamesSorted
       };
     case SORT_GAMES_BY_RATING:
-      const gamesSortedByRating = action.payload === 'high'
-        ? state.allGames.sort((a, b) => b.rating - a.rating)
+        const gamesUpd = [...state.games];
+        const gamesSortedByRating = action.payload === 'high'
+        ? gamesUpd.sort((a, b) => b.rating - a.rating)
         : action.payload === 'low'
-        ? state.allGames.sort((a, b) => a.rating - b.rating)
-        : gamesSortedByRating = state.allGames;
+        ? gamesUpd.sort((a, b) => a.rating - b.rating)
+        : gamesSortedByRating = gamesUpd;
       console.log(gamesSortedByRating)
       return {
         ...state,
