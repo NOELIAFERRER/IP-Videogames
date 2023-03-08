@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/Game.module.css";
+import styles from "../Game/Game.module.css";
 
 const Game = ({ image, name, id, genres, rating }) => {
   return (
@@ -16,15 +16,14 @@ const Game = ({ image, name, id, genres, rating }) => {
       </div>
       <div className={styles.titles}>
         <div>
-          {/* <p> */}
           {name}
           {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
-          {/* </p> */}
         </div>
-        {/* <p>{genres}</p> */}
+
         {genres?.map((g) => (
           <div className={styles.genres}>{g}</div>
         ))}
+        
         <div className={styles.rating}>{rating}</div>
       </div>
     </div>

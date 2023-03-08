@@ -53,6 +53,7 @@ videogameRouter.post('/', async (req, res) => {
       return res.status(404).send('Datos enviados con error')
     }
     const newGame = await addGame(image, name, description, released, rating, genres, platforms);
+ 
     return res.status(201).json(newGame)
   }
   catch (error) {

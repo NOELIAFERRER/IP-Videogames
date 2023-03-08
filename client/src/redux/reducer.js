@@ -9,7 +9,8 @@ import {
   SORT_GAMES_BY_RATING,
   GET_GAMES_BY_GENRE,
   FILTER_GAMES,
-  ADD_GAME
+  ADD_GAME,
+  RESET_DETAILS
 } from "./actions"
 
 const initialState = {
@@ -71,7 +72,10 @@ const rootReducer = (state = initialState, action) => {
         gameDetail: action.payload
       };
     case GET_GAMES_BY_GENRE:
-      const gamesFilterByGenre = state.allGames.filter(el => el.genres.includes(action.payload))
+      const gamesUp = [...state.games]
+      const gamesFilterByGenre = action.payload === 'all'
+      ? gamesFilterByGenre = gamesUp
+      : gamesUp.filter(el => el.genres.includes(action.payload))
       // console.log(state.allGames)
       console.log(gamesFilterByGenre)
       return {
@@ -81,7 +85,8 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_GAMES:
       const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
       const gamesFiltered = action.payload === 'gameExist' 
-      ? state.allGames.filter(game => regexExp.test(game.id) === false)
+      ? state.allGames
+      // ? state.allGames.filter(game => regexExp.test(game.id) === false)
       : state.allGames.filter(game => regexExp.test(game.id) === true)
       console.log(gamesFiltered)
       return {
@@ -115,6 +120,11 @@ const rootReducer = (state = initialState, action) => {
     case ADD_GAME:
       return {
         ...state
+      }
+    case RESET_DETAILS:
+      return{
+        ...state,
+        gameDetail: {}
       }
     case ERROR:
       return {

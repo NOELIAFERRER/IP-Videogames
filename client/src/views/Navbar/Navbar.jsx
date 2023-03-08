@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useEffect } from 'react-redux'
-import styles from '../styles/Navbar.module.css'
+import styles from '../Navbar/Navbar.module.css'
 import { Link } from "react-router-dom";
-import { getGameByName } from "../redux/actions";
+import { getGameByName } from "../../redux/actions";
 
 
 const Navbar = () => {
@@ -21,7 +21,6 @@ const Navbar = () => {
         if (input !== '') dispatch(getGameByName(input))
         console.log(input)
         setInput('')
-
     }
 
     return (

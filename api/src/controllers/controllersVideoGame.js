@@ -262,46 +262,28 @@ const addGame = async (image, name, description, released, rating, genres, platf
     description,
     released,
     rating,
-    // genres,
-    // platforms
  
   include: [
     {model: Genre, through: {attributes: []}},
-    {model: Platform, through: {attributes: []}}
-    // {model: Platform, attributes: ['name'], through: {attributes: []}}
+    {model: Platform, through: {attributes: []}}    
   ]
-})
-  // {
-  //   include: {
-  //     model: Genre,
-  //     attributes: ['name', 'id'], //agregué id para que me los actualice en el modelo si no existe el name
-  //     through: {
-  //       attributes: []
-  //     },
-  //   }
-  // },
-  // {
-  //   include: {
-  //     model: Platform,
-  //     attributes: ['name', 'id'], //agregué id para que me los actualice en el modelo si no existe el name
-  //     through: {
-  //       attributes: []
-  //     },
-  //   }
-  // }
-  // )
-  genres.forEach(async (game) => {
-    // let genresGame = await Genre.findOne({ where: { name: game } })
-    // lo modifico para cuando sea un genero creado si no existe!
-    let genresGame = await Genre.findOrCreate({ where: { name: game } })
+})  
+  genres.forEach(async (genres) => {
+    let genresGame = await Genre.findOrCreate({ where: { name:genres } })
     await newGame.addGenre(genresGame)
   })
-  platforms.forEach(async (game) => {
-    let platformsGame = await Platform.findOne({ where: { name: game } })
+  platforms.forEach(async (platforms) => {
+    let platformsGame = await Platform.findOrCreate({ where: { name: platforms } })
     await newGame.addPlatform(platformsGame)
   })
   console.log('newGame:',newGame);
   return newGame;
+
+
+     //creo la vinculación en la base de datos relacional. El método set crea tantos campos como genres haya.
+    //  await newGame.setGenres(genres)
+    //  await newGame.setPlatforms(platforms)
+
 }
 
 

@@ -1,5 +1,5 @@
 .container {
-  background-image: url("./home-background.jpg");
+  background-image: url("../../../public/images/home-background.jpg");
   /* background-color: #FFD57A;  */
   /* height: 100vh; */
   background-size: cover;

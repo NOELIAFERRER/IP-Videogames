@@ -8,9 +8,9 @@ import {
   filterGames,
   sortGames,
   sortGamesByRating,
-} from "../redux/actions";
+} from "../../redux/actions";
 
-import styles from "../styles/Functions.module.css";
+import styles from "../Functions/Functions.module.css";
 
 const Functions = ({ setCurrentPage }) => {
   const games = useSelector((state) => state.games);
@@ -81,10 +81,10 @@ const Functions = ({ setCurrentPage }) => {
           SORT by RATING
         </option>
         <option name="high" id="hig" value="high">
-          MAYOR RATING
+          DESCENDING
         </option>
         <option name="low" id="low" value="low">
-          MENOR RATING
+         ASCENDING
         </option>
       </select>
 
@@ -95,23 +95,36 @@ const Functions = ({ setCurrentPage }) => {
         onChange={(e) => genreHandler(e)}
       >
         <option name="genres" id="gen" value="genres">
-          TODOS LOS GENEROS
+        ALL GAMES
         </option>
         {allGenres.map((el) => (
           <option value={`${el}`}>{el.toUpperCase()}</option>
         ))}
       </select>
-      <select
+
+{/* <button className={styles.bars} onClick={(e) => filterHandler(e)}>CREATED GAMES</button> */}
+      {/* <select
         className={styles.bars}
         name="filter"
         id="fil"
         onChange={(e) => filterHandler(e)}
       >
         <option name="gameExist" id="exi" value="gameExist">
-          VIDEOGAMES EXISTENTES
+          CREATED GAMES
         </option>
-        <option name="gameAd" id="add" value="gameAd">
-          VIDEOGAMES AGREGADOS
+        </select> */}
+
+      <select
+        className={styles.bars}
+        name="filter"
+        id="fil"
+        onChange={(e) => filterHandler(e)}
+      >
+        <option name="gameAd" id="exi" value="gameAd">
+          CREATED GAMES
+        </option>
+        <option name="gameExist" id="add" value="gameExist">
+          ALL GAMES
         </option>
       </select>
     </div>

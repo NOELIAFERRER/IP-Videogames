@@ -1,11 +1,11 @@
 import './App.css';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import Form from './components/Form';
-import Landing from './components/Landing';
-import GameDetail from './components/GameDetail';
+import Home from './views/Home/Home';
+import Navbar from './views/Navbar/Navbar';
+import Form from './views/Form/Form';
+import Landing from './views/Landing/Landing';
+import GameDetail from './components/Details/GameDetail';
 import { Route } from 'react-router-dom';
-import Game from './components/Game';
+// import Game from './components/Game';
 // import Details from './components/Details';
 import { Email } from './components/Email';
 

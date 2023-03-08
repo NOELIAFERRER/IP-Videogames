@@ -2,17 +2,21 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import Select from 'react-select'
-import { getAllGames } from "../redux/actions";
-import styles from "../styles/Form.module.css";
+import { getAllGames, addGame } from "../../redux/actions";
+import styles from "../Form/Form.module.css";
 
-const Form = ({ name, description, released, rating }) => {
+const Form = ({ name, description, released, rating, image }) => {
+  const allGames = useSelector((state) => state.allGames);
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     name: "",
     description: "",
     released: "",
     rating: "",
-    genres: "",
-    platforms: "",
+    image:"",
+    genres:[],
+    platforms: []
   });
 
   const [error, setError] = useState({});
@@ -20,8 +24,8 @@ const Form = ({ name, description, released, rating }) => {
   //    name: '',
   //    // description: ''
   // })
-  const dispatch = useDispatch();
-  const allGames = useSelector((state) => state.allGames);
+
+
 
   //Guardo en un array los géneros de cada juego)
   const allGen = allGames.map((g) => g.genres).flat();
@@ -126,17 +130,18 @@ const Form = ({ name, description, released, rating }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     await axios.post("http://localhost:3001/videogames", input);
+    // dispatch(addGame())
     console.log(input);
     setInput({
       name: "",
+      image:"",
       description: "",
       released: "",
       rating: "",
-      genres: "",
-      platforms: "",
+      genres:[],
+      platforms: [],
     });
     alert("Datos enviados correctamente");
-    
   };
 
   return (
@@ -194,7 +199,7 @@ const Form = ({ name, description, released, rating }) => {
 
         <div className={styles.inner}>
           <label htmlFor="img">IMAGEN</label>
-          <input type="text" id="img" name="image" value={input.image} />
+          <input type="text" id="img" name="image" onChange={changeHandler} value={input.image} />
         </div>
 
         <div className={styles.select}>
@@ -242,7 +247,7 @@ const Form = ({ name, description, released, rating }) => {
           </div>
           <br />
           <button className={styles.btn} type="submit" disable={error}>
-            CREAR
+            CREATE
           </button>
         </div>
       </form>
