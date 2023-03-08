@@ -266,8 +266,9 @@ const addGame = async (image, name, description, released, rating, genres, platf
     // platforms
  
   include: [
-    {model: Genre, attributes: ['name'], through: {attributes: []}},
-    {model: Platform, attributes: ['name'], through: {attributes: []}}
+    {model: Genre, through: {attributes: []}},
+    {model: Platform, through: {attributes: []}}
+    // {model: Platform, attributes: ['name'], through: {attributes: []}}
   ]
 })
   // {
@@ -290,15 +291,16 @@ const addGame = async (image, name, description, released, rating, genres, platf
   // }
   // )
   genres.forEach(async (game) => {
-    let genresGame = await Genre.findOne({ where: { name: game } })
+    // let genresGame = await Genre.findOne({ where: { name: game } })
     // lo modifico para cuando sea un genero creado si no existe!
-    // let genresGame = await Genre.findOrCreate({ where: { name: game } })
+    let genresGame = await Genre.findOrCreate({ where: { name: game } })
     await newGame.addGenre(genresGame)
   })
   platforms.forEach(async (game) => {
     let platformsGame = await Platform.findOne({ where: { name: game } })
     await newGame.addPlatform(platformsGame)
   })
+  console.log('newGame:',newGame);
   return newGame;
 }
 

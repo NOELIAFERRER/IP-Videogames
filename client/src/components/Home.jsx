@@ -19,7 +19,8 @@ import styles from '../styles/Home.module.css'
 const Home = () => {
 
     const games = useSelector(state => state.games)
-    const allGenres = useSelector(state => state.genres)
+    const allGames = useSelector(state => state.allGames)
+    // const allGenres = useSelector(state => state.genres)
     const dispatch = useDispatch()
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -27,28 +28,51 @@ const Home = () => {
     const indexLastGame = currentPage * gamesXPage;
     const indexFirstGame = indexLastGame - gamesXPage;
     const currentGames = games.slice(indexFirstGame, indexLastGame);
+    // const [currentGames, setCurrentGames] = useState([games.slice(indexFirstGame, indexLastGame)])
 
     const paging = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
-    const [select, setSelect] = useState('');
+    const allGen = allGames.map((g) => g.genres).flat();
+    //   Elimino los valores repetidos y ordeno alfabéticamente
+    const allGenres = [...new Set(allGen)].sort((a, b) => {
+      if (a.toLowerCase() > b.toLowerCase()) return 1;
+      if (a.toLowerCase() < b.toLowerCase()) return -1;
+      else return 0;
+    });
+
+    // const [select, setSelect] = useState('');
 
     useEffect(() => {
-        dispatch(getAllGames())
-        // dispatch(getGenres())
-        // dispatch(sortGames())
-    }, [dispatch])
+       dispatch(getAllGames());
+       console.log('indexFirstGame', indexFirstGame)
+       console.log('currentGames', currentGames)
+      }, [dispatch]);
 
 
     // console.log(allGenres)
 
-    const onChangeHandler = (event) => {
-        event.target.value === 'genres'
-            ? dispatch(getGamesByGenre(event.target.value))
-            : dispatch(getGamesFilter(event.target.value))
-        setCurrentPage(1);
-        console.log(event.target.value)
+    // const onChangeHandler = (event) => {
+    //     event.target.value === 'genres'        
+    //         ? dispatch(getGamesByGenre(event.target.value))
+    //         : dispatch(getGamesFilter(event.target.value))
+    //     setCurrentPage(1);
+    //     console.log('event.target.value:',event.target.value)
+    // }
+
+    const genreHandler = (event) => {
+        event.preventDefault();
+        dispatch(getGamesByGenre(event.target.value))
+        // setSelect(games)
+        setCurrentPage(1);        
+    }
+
+    const filterHandler = (event) => {
+        event.preventDefault();
+        dispatch(getGamesFilter(event.target.value))
+        // setSelect(games)
+        setCurrentPage(1);        
     }
 
     //probando filtr x videogames existentes o agregados
@@ -70,10 +94,12 @@ const Home = () => {
     const sortHandler = (event) => {
         event.preventDefault();
         dispatch(sortGames(event.target.value))
+        // setSelect(games)
         setCurrentPage(1);
-        setSelect(games)
-        console.log(event.target.value)
-        console.log(games)
+        console.log('action.sort:',event.target.value)
+        console.log('games', games)
+        console.log('indexFirstGame', indexFirstGame)
+       console.log('currentGames', currentGames)
     }
     // console.log(games)
 
@@ -81,7 +107,7 @@ const Home = () => {
         event.preventDefault();
         dispatch(sortGamesByRating(event.target.value))
         setCurrentPage(1);
-        setSelect(games);
+        // setSelect(games);
         console.log(event.target.value)
         console.log(games)
     }
@@ -96,25 +122,27 @@ const Home = () => {
                 />
             </div>
             <div className={styles.home}>
-                <div className={styles.selectors}>
+                <div className={styles.selectors}>                
                     <select className={styles.bars} name='sort' onChange={(e) => sortHandler(e)}>
-                        <option name='ascendent' value='ascendent' >A-Z ORDEN</option>
-                        <option name='descendent' value='descendent'>Z-A ORDEN</option>
+                        <option name='SORT A-Z' value='no order' >SORT by NAME</option>
+                        <option name='ascendent' value='ascendent' >A-Z</option>
+                        <option name='descendent' value='descendent'>Z-A</option>
                     </select>
 
                     <select className={styles.bars} name='sort' id='sorRat' onChange={(e) => ratingHandler(e)}>
+                        <option name='SORT By Rating' id='no order'>SORT by RATING</option>
                         <option name='high' id='hig' value='high' >MAYOR RATING</option>
                         <option name='low' id='low' value='low'>MENOR RATING</option>
                     </select>
 
-                    <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => onChangeHandler(e)}>
+                    <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => genreHandler(e)}>
                         {/* <select className={styles.bars} name='filterByGenre' id='filGen' onChange={(e) => filterByGenreHandler(e)}> */}
                         <option name='genres' id='gen' value='genres'>TODOS LOS GENEROS</option>
                         {
                             allGenres.map(el => <option value={`${el}`}>{el.toUpperCase()}</option>)
                         }
                     </select>
-                    <select className={styles.bars} name='filter' id='fil' onChange={(e) => onChangeHandler(e)}>
+                    <select className={styles.bars} name='filter' id='fil' onChange={(e) => filterHandler(e)}>
                         <option name='gameExist' id='exi' value='gameExist'>VIDEOGAMES EXISTENTES</option>
                         <option name='gameAd' id='add' value='gameAd'>VIDEOGAMES AGREGADOS</option>
                     </select>
@@ -122,13 +150,16 @@ const Home = () => {
                 <br />
                 <div className={styles.games}>
 
+                    {/* {currentGames.map((game, key) => */}
                     {currentGames.map((game, key) =>
+
                         <Link to={`/games/details/${game.id}`}>
                             <Game
                                 key={game.id}
                                 image={game.image}
                                 name={game.name}
-                                genres={game.genres}
+                                genres={game.genres}                                
+                                rating={game.rating}
                             />
                         </Link>
                     )}

@@ -72,7 +72,7 @@ const rootReducer = (state = initialState, action) => {
       };
     case GET_GAMES_BY_GENRE:
       const gamesFilterByGenre = state.allGames.filter(el => el.genres.includes(action.payload))
-      console.log(state.allGames)
+      // console.log(state.allGames)
       console.log(gamesFilterByGenre)
       return {
         ...state,
@@ -80,8 +80,8 @@ const rootReducer = (state = initialState, action) => {
       };
     case GET_GAMES_FILTER:
       const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-      const gamesFiltered = action.payload === 'gameExist' ?
-      state.allGames.filter(game => regexExp.test(game.id) === false)
+      const gamesFiltered = action.payload === 'gameExist' 
+      ? state.allGames.filter(game => regexExp.test(game.id) === false)
       : state.allGames.filter(game => regexExp.test(game.id) === true)
       console.log(gamesFiltered)
       return {
@@ -89,18 +89,21 @@ const rootReducer = (state = initialState, action) => {
         games: gamesFiltered
       };
     case SORT_GAMES:
-      const gamesSorted = action.payload === 'ascendent' 
-        ? state.allGames.sort((a, b) => {
+      const gamesSorted = action.payload === 'ascendent'       
+          ? state.allGames.sort((a, b) => {
           if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
           if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
           return 0;
         })
-        : state.allGames.sort((a, b) => {
+        // : state.allGames.sort((a, b) => {
+        : action.payload === 'descendent'
+        ? state.allGames.sort((a, b) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
           if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
           return 0;
         })
-      console.log(gamesSorted)
+        : gamesSorted = state.allGames
+      console.log('gamesSorted;',gamesSorted)
       return {
         ...state,
         games: gamesSorted
@@ -108,7 +111,9 @@ const rootReducer = (state = initialState, action) => {
     case SORT_GAMES_BY_RATING:
       const gamesSortedByRating = action.payload === 'high'
         ? state.allGames.sort((a, b) => b.rating - a.rating)
-        : state.allGames.sort((a, b) => a.rating - b.rating)
+        : action.payload === 'low'
+        ? state.allGames.sort((a, b) => a.rating - b.rating)
+        : gamesSortedByRating = state.allGames;
       console.log(gamesSortedByRating)
       return {
         ...state,

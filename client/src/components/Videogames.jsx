@@ -25,6 +25,7 @@ class Videogames extends React.Component {
                             name={game.name}
                             // genres={game.genres.map((genre, key) =>  genre).join(' | ')}
                             genres={game.genres.map((genre, key) =>  genre)}
+                            rating={game.rating}
 
                         />
                     // </Link>

@@ -136,6 +136,7 @@ const Form = ({ name, description, released, rating }) => {
       platforms: "",
     });
     alert("Datos enviados correctamente");
+    
   };
 
   return (

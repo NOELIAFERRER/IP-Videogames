@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Game.module.css";
 
-const Game = ({ image, name, id, genres }) => {
+const Game = ({ image, name, id, genres, rating }) => {
   return (
     <div className={styles.container}>
       <div>
@@ -15,14 +15,17 @@ const Game = ({ image, name, id, genres }) => {
         {/* </Link> */}
       </div>
       <div className={styles.titles}>
-        <p>
+        <div>
+          {/* <p> */}
           {name}
           {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
-        </p>
+          {/* </p> */}
+        </div>
         {/* <p>{genres}</p> */}
         {genres?.map((g) => (
-          <p> {g} </p>
+          <div className={styles.genres}>{g}</div>
         ))}
+        <div className={styles.rating}>{rating}</div>
       </div>
     </div>
   );
