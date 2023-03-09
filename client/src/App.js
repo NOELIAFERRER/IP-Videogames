@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import Home from './views/Home/Home';
 import Navbar from './views/Navbar/Navbar';
 import Form from './views/Form/Form';
@@ -8,10 +8,11 @@ import { Route } from 'react-router-dom';
 // import Game from './components/Game';
 // import Details from './components/Details';
 import { Email } from './components/Email';
+import styles from './App.modules.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.container}>
       <Route exact path='/' component={Landing} />
       <Route path='/games'>
         <Navbar />

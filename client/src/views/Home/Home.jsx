@@ -35,7 +35,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.pages}>
         <Pagination
           gamesXPage={gamesXPage}
           games={games.length}

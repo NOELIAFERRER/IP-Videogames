@@ -3,11 +3,12 @@
   background-size: cover;
   /* background-color: #FF4444; */
   margin: 3px 0px 0px 0px;
-  padding: 0px 10px 10px 0px;
+  padding: 16px;
   height: 160px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto 70%;
   justify-content: space-between;
+  /* justify-content: flex-start;   */
   align-items: center;
 }
 
@@ -19,6 +20,7 @@
 } */
 
 .navigate {
+  /* grid-row: 1/2; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,44 +69,37 @@
 }
 
 .searchBar {
+  /* grid-column: 2; */
   display: flex;
   flex-direction: row;
   /* row-gap: 10px; */
   /* justify-content: space-between; */
   align-items: center;
-  /* margin: 0 20px; */
 }
 
 .input {
-  width: 580px;
-  height: 12px;
-  padding: 3%;
-  /* margin: 5px; */
+  width: 70%;
+  height: 55px;
   border-top-left-radius: 17px;
   border-bottom-left-radius: 17px;
   border-color: #ffedc6;
   background-color: #f48e8e;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .btn {
   width: 80px;
-  height: 58px;
-  /* padding: 3%; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* margin: 5px; */
-
+  height: 60px;
   border-top-right-radius: 17px;
   border-bottom-right-radius: 17px;
   background: linear-gradient(315deg, #352929, #111111);
-  /* box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
-      */
   color: #ffedc6;
   font-style: bold;
   cursor: pointer; 
   font-size: 12px;
   font-family: Helvetica;
+  text-align: center;
 }
 
 .btn:hover {
