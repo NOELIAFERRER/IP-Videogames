@@ -16,7 +16,7 @@ export const RESET_DETAILS = "RESET_DETAILS";
 export const getAllGames = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/videogames");
+      const response = await axios.get("/videogames");
       const allGames = response.data;
       // console.log(allGames)
       dispatch({
@@ -36,7 +36,7 @@ export const getGameByName = (name) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/videogames/?name=${name}`
+        `/videogames/?name=${name}`
       );
       const gameByName = response.data;
       console.log(gameByName);
@@ -57,7 +57,7 @@ export const getGameDetails = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/videogames/${id}`
+        `/videogames/${id}`
       );
       const gameDetail = response.data;
       console.log(gameDetail);
@@ -78,7 +78,7 @@ export const addGame = (payload) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/videogames", payload
+        "/videogames", payload
       );
       console.log(response);
       return response;     

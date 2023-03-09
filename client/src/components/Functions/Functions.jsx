@@ -101,19 +101,6 @@ const Functions = ({ setCurrentPage }) => {
           <option value={`${el}`}>{el.toUpperCase()}</option>
         ))}
       </select>
-
-{/* <button className={styles.bars} onClick={(e) => filterHandler(e)}>CREATED GAMES</button> */}
-      {/* <select
-        className={styles.bars}
-        name="filter"
-        id="fil"
-        onChange={(e) => filterHandler(e)}
-      >
-        <option name="gameExist" id="exi" value="gameExist">
-          CREATED GAMES
-        </option>
-        </select> */}
-
       <select
         className={styles.bars}
         name="filter"

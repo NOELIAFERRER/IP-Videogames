@@ -9,6 +9,8 @@ import { Route } from 'react-router-dom';
 // import Details from './components/Details';
 import { Email } from './components/Email';
 import styles from './App.modules.css';
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   return (
