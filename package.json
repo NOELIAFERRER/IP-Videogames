@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "emailjs-com": "^3.2.0",
-    "nodemailer": "^6.8.0"
-  }
-}
