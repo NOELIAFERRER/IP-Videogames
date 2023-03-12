@@ -303,12 +303,12 @@ if (genresDb.length === 0) {
 
 // const genresDb = await genres.map(g => Genre.findOrCreate({where: {name : g}}))
 
-let platformsDb = await  Genre.findAll({ 
+let platformsDb = await  Platform.findAll({ 
   where: {name : platforms}
 })
 
 if (platformsDb.length === 0) {
-   const newPlatform = await Platform.bulkCreate({ name: platforms });
+   const newPlatform = await Platform.bulkCreate(platforms);
   platformsDb = [...newPlatform];
 }
 

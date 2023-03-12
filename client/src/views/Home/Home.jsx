@@ -47,11 +47,12 @@ const Home = () => {
           <Functions setCurrentPage={setCurrentPage} />
         </div>
 
-        <br />
+        {/* <br /> */}
         <div className={styles.games}>
           {currentGames.map((game, key) => (
             <Link to={`/games/details/${game.id}`}>
-              <Game
+              <Game 
+                className={styles.card}
                 key={game.id}
                 image={game.image}
                 name={game.name}

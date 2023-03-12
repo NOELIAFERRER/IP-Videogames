@@ -1,10 +1,12 @@
 .container {
   background-image: url("../../../public/images/navbar11.jpg");
   background-size: cover;
+  margin-top: 3px;
   /* background-color: #FF4444; */
-  margin: 3px 0px 0px 0px;
-  padding: 16px;
-  height: 160px;
+  /* margin: 3px 0px 0px 0px; */
+  /* padding: 16px; */
+  width: 100vw;
+  height: 200px;
   display: grid;
   grid-template-columns: auto 70%;
   justify-content: space-between;
@@ -72,6 +74,7 @@
   /* grid-column: 2; */
   display: flex;
   flex-direction: row;
+
   /* row-gap: 10px; */
   /* justify-content: space-between; */
   align-items: center;
@@ -85,7 +88,7 @@
   border-color: #ffedc6;
   background-color: #f48e8e;
   text-align: left;
-  margin-left: 10px;
+ 
 }
 
 .btn {

@@ -1,12 +1,16 @@
 .selectors {
-    width: 15vw;
+    color: rgb(43, 226, 156);
+    display: flex;
+    flex-direction: column;
+    /* width: 15vw; */
   }
   
-
   .bars {
-    width: 140px;
+    min-width: 120px;
+    /* max-width: 140px; */
+    /* width: minmax(100px, 140px); */
     height: 44px;
-    padding: 3%;
+    padding: 2%;
     margin: 10px 2px 2px 2px;
     border-top-right-radius: 17px;
     border-bottom-right-radius: 17px;    
@@ -15,7 +19,7 @@
     transition: ease-out 0.5s;
     cursor: pointer;
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Helvetica;
   }
   

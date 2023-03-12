@@ -16,8 +16,8 @@ const getGenres = async () => {
     if (!resultDb.length) {
         const apiData = (await axios.get(`https://rawg.io/api/genres?key=${RAWG_APIKEY}`))
         const result = apiData.data.results.map(genre => {return {name: genre.name }})
-        // resultDb = Genre.bulkCreate(result);
-        resultDb = result
+        resultDb = Genre.bulkCreate(result);
+        // resultDb = result
         console.log('genres:',result)
     }
     return resultDb;

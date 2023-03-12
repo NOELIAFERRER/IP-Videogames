@@ -15,16 +15,16 @@ const Game = ({ image, name, id, genres, rating }) => {
         {/* </Link> */}
       </div>
       <div className={styles.titles}>
+        <div>{name}</div>
         <div>
-          {name}
           {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
+          <div className={styles.rating}>{rating}</div>
         </div>
-
-        {genres?.map((g) => (
-          <div className={styles.genres}>{g}</div>
+      </div>
+      <div className={styles.genres}>
+        {genres?.map((g, key) => (
+          <div className={styles.genre}>{g}</div>
         ))}
-        
-        <div className={styles.rating}>{rating}</div>
       </div>
     </div>
   );

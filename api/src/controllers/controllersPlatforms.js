@@ -18,8 +18,8 @@ const getPlatforms = async () => {
         const apiData = (await axios.get(`https://rawg.io/api/platforms?key=${RAWG_APIKEY}`))
         
         const result = apiData.data.results.map(p => {return {name: p.name }})
-        // resultDb = Platform.bulkCreate(result);
-        resultDb= result
+        resultDb = Platform.bulkCreate(result);
+        // resultDb= result
         console.log('platforms:',result)
     }
         return resultDb
