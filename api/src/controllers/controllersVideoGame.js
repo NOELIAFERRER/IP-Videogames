@@ -255,37 +255,123 @@ const getApiGameById = async (id) => {
 //   }
 // }
 
+
+
+// const addGame = async (image, name, description, released, rating, genres, platforms) => {
+//   const newGame = await Videogame.create({
+//     image,
+//     name,
+//     description,
+//     released,
+//     rating,    
+//   });
+
+//   let [genresDb, platformsDb] = await Promise.all([
+//     Genre.findOrCreate({ where: { name: { [Op.in]: genres } } }),
+//     Platform.findOrCreate({ where: { name: { [Op.in]: platforms } } })
+//     // Platform.findOrCreate({ where: { name: { [Op.in]: platforms } } })
+
+//   ]);
+
+//   await Promise.all([
+//     ...genresDb.map(g => newGame.addGenre(g)),
+//     ...platformsDb.map(p => newGame.addPlatform(p))
+//   ]);
+
+//   console.log('newGame:', newGame);
+//   return newGame;
+// }
+
+
 const addGame = async (image, name, description, released, rating, genres, platforms) => {
   const newGame = await Videogame.create({
     image,
     name,
     description,
     released,
-    rating,
- 
-  include: [
-    {model: Genre, through: {attributes: []}},
-    {model: Platform, through: {attributes: []}}    
-  ]
-})  
-  genres.forEach(async (genres) => {
-    let genresGame = await Genre.findOrCreate({ where: { name:genres } })
-    await newGame.addGenre(genresGame)
+    rating, 
   })
-  platforms.forEach(async (platforms) => {
-    let platformsGame = await Platform.findOrCreate({ where: { name: platforms } })
-    await newGame.addPlatform(platformsGame)
+  
+  let genresDb = await  Genre.findAll({ 
+    where: {name : genres}
   })
-  console.log('newGame:',newGame);
-  return newGame;
+
+if (genresDb.length === 0) {
+  const newGenre = await Genre.bulkCreate(genres)
+  genresDb = [...newGenre];
+}
+
+// const genresDb = await genres.map(g => Genre.findOrCreate({where: {name : g}}))
+
+let platformsDb = await  Genre.findAll({ 
+  where: {name : platforms}
+})
+
+if (platformsDb.length === 0) {
+   const newPlatform = await Platform.bulkCreate({ name: platforms });
+  platformsDb = [...newPlatform];
+}
+
+newGame.addGenres(genresDb);
+newGame.addPlatforms(platformsDb);
+console.log(newGame)
+}
 
 
-     //creo la vinculación en la base de datos relacional. El método set crea tantos campos como genres haya.
+
+
+
+//   include: [
+//     {model: Genre, through: {attributes: []}},
+//     {model: Platform, through: {attributes: []}}    
+//   ]
+
+//   genres.forEach(async (genres) => {
+//     let genresGame = await Genre.findOrCreate({ where: { name:genres } })
+//     await newGame.addGenre(genresGame)
+//   })
+//   platforms.forEach(async (platforms) => {
+//     let platformsGame = await Platform.findOrCreate({ where: { name: platforms } })
+//     await newGame.addPlatform(platformsGame)
+//   })
+//   console.log('newGame:',newGame);
+//   return newGame;
+
+// }
+
+    //creo la vinculación en la base de datos relacional. El método set crea tantos campos como genres haya.
     //  await newGame.setGenres(genres)
     //  await newGame.setPlatforms(platforms)
 
-}
 
+    // const addGame = async (image, name, description, released, rating, genres, platforms) => {
+    //   const newGame = await Videogame.create({
+    //     image,
+    //     name,
+    //     description,
+    //     released,
+    //     rating,
+    //   });
+    
+    //   let [genresDb, platformsDb] = await Promise.all([
+    //     Genre.findAll({ where: { name: genres } }),
+    //     Platform.findAll({ where: { name: platforms } })
+    //   ]);
+    
+    //   if (genresDb.length !== genres.length) {
+    //     const missingGenres = genres.filter(name => !genresDb.some(g => g.name === name));
+    //     throw new Error(`Genres not found: ${missingGenres.join(', ')}`);
+    //   }
+    
+    //   if (platformsDb.length !== platforms.length) {
+    //     const missingPlatforms = platforms.filter(name => !platformsDb.some(p => p.name === name));
+    //     throw new Error(`Platforms not found: ${missingPlatforms.join(', ')}`);
+    //   }
+    
+    //   await newGame.addGenres(genresDb);
+    //   await newGame.addPlatforms(platformsDb);
+    // }
+    
 
 module.exports = {
   getApiGames,
