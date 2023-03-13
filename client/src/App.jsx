@@ -10,6 +10,7 @@ import { Route } from 'react-router-dom';
 // import { Email } from './components/Email';
 import styles from './App.modules.css';
 import axios from 'axios';
+import Footer from './views/Footer/Footer';
 axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
         path='/games/details/:id'
         render={(match) => <GameDetail match={match}/>}
       />
+      <Route path='/games'>
+        <Footer />
+      </Route>
     </div>
   );
 }

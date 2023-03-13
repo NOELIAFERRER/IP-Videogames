@@ -10,7 +10,7 @@ const Pagination = ({ paging, games, gamesXPage }) => {
     return (
         <nav className={styles.pages}>
             <ul>
-                {pages.map(number => (
+                {pages.map((number, key) => (
                     <button className={styles.btn} onClick={() => paging(number)}>{number}</button>
                 ))}
             </ul>

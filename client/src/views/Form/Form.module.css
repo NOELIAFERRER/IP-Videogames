@@ -1,4 +1,6 @@
 .container {
+    background-image: url("../../../public/images/form.png");
+    background-size: cover;
     width: 100vw;
     padding: 5px;
     font-size: 10px;  

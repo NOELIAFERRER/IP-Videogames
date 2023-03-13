@@ -2,9 +2,9 @@ import {
   ERROR,
   GET_ALL_GAMES,
   GET_GAME_BY_NAME,
-  // GET_GENRES,
+  GET_GENRES,
   GET_GAME_DETAILS,
-  // GET_PLATFORMS,
+  GET_PLATFORMS,
   SORT_GAMES,
   SORT_GAMES_BY_RATING,
   GET_GAMES_BY_GENRE,
@@ -35,37 +35,28 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         games: action.payload
       };
-    // case GET_GENRES:
-    //   let genresSorted = action.payload.map(el => el.name).sort((a, b) => {
-    //     if (a.toLowerCase() > b.toLowerCase()) return 1
-    //     if (a.toLowerCase() < b.toLowerCase()) return -1
-    //     else return 0
-    //   })
-    //   // console.log(genresSorted)
-    //   return {
-    //     ...state,
-    //     genres: genresSorted
-    //   };
-    // case GET_PLATFORMS:
-    //   let allPlatforms = [];
-    //   state.allGames.map(el => {
-
-    //     //console.log(el.platforms)
-    //     if (el.platforms) {
-    //       allPlatforms = [...allPlatforms, ...el.platforms]
-    //     }
-
-    //   })
-    //   allPlatforms = [...new Set(allPlatforms)].sort((a, b) => {
-    //     if (a.toLowerCase() > b.toLowerCase()) return 1
-    //     if (a.toLowerCase() < b.toLowerCase()) return -1
-    //     else return 0
-    //   })
-    //   console.log(allPlatforms);
-    //   return {
-    //     ...state,
-    //     platforms: allPlatforms,
-    //   };
+    case GET_GENRES:
+      let genresSorted = action.payload.map(el => el.name).sort((a, b) => {
+        if (a.toLowerCase() > b.toLowerCase()) return 1
+        if (a.toLowerCase() < b.toLowerCase()) return -1
+        else return 0
+      })
+      // console.log(genresSorted)
+      return {
+        ...state,
+        genres: genresSorted
+      };
+      case GET_PLATFORMS:
+        let platformsSorted = action.payload.map(el => el.name).sort((a, b) => {
+          if (a.toLowerCase() > b.toLowerCase()) return 1
+          if (a.toLowerCase() < b.toLowerCase()) return -1
+          else return 0
+        })
+        // console.log(platformsSorted)
+        return {
+          ...state,
+          platforms: platformsSorted
+        }; 
     case GET_GAME_DETAILS:
       return {
         ...state,

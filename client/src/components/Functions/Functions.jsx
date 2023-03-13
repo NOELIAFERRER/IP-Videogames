@@ -29,7 +29,6 @@ const Functions = ({ setCurrentPage }) => {
   const genreHandler = (event) => {
     event.preventDefault();
     dispatch(getGamesByGenre(event.target.value));
-
     setCurrentPage(1);
   };
 

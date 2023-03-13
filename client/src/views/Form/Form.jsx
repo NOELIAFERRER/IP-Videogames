@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import Select from 'react-select'
-import { getAllGames, addGame } from "../../redux/actions";
+import { getGenres, getPlatforms } from "../../redux/actions";
 import styles from "../Form/Form.module.css";
 
-const Form = ({ name, description, released, rating, image }) => {
-  const allGames = useSelector((state) => state.allGames);
+const Form = () => {
+  // const allGames = useSelector((state) => state.allGames);
+  const genres = useSelector((state) => state.genres);
+  const platforms = useSelector((state) => state.platforms)
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -20,36 +22,14 @@ const Form = ({ name, description, released, rating, image }) => {
   });
 
   const [error, setError] = useState({});
-  //    {
-  //    name: '',
-  //    // description: ''
-  // })
-
-
-
-  //Guardo en un array los géneros de cada juego)
-  const allGen = allGames.map((g) => g.genres).flat();
-  //   Elimino los valores repetidos y ordeno alfabéticamente
-  const allGenres = [...new Set(allGen)].sort((a, b) => {
-    if (a.toLowerCase() > b.toLowerCase()) return 1;
-    if (a.toLowerCase() < b.toLowerCase()) return -1;
-    else return 0;
-  });
-
-  //Guardo en un array las plataformas de cada juego)
-  const allPlat = allGames.map((g) => g.platforms).flat();
-  //   Elimino los valores repetidos y ordeno alfabéticamente
-  const allPlatforms = [...new Set(allPlat)].sort((a, b) => {
-    if (a.toLowerCase() > b.toLowerCase()) return 1;
-    if (a.toLowerCase() < b.toLowerCase()) return -1;
-    else return 0;
-  });
-
-  console.log("platforms:", allPlatforms);
 
   useEffect(() => {
-    if (!allGames.length) dispatch(getAllGames());
-  }, [dispatch, allGames.length]);
+    dispatch(getGenres())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getPlatforms())
+  }, [dispatch])
 
   const validateInput = (input) => {
     console.log(input.name);
@@ -102,7 +82,7 @@ const Form = ({ name, description, released, rating, image }) => {
   const changeGenresHandler = (event) => {
     setInput({
       ...input,
-      // [event.target.name]: [...new Set([...input.genres, event.target.value])] pruebo haciendo un array!!
+      // [event.target.name]: [...new Set([...input.genres, event.target.value])] // pruebo haciendo un array!!
       [event.target.name]: [...input.genres, event.target.value],
     });
     console.log(event.target.value);
@@ -129,7 +109,7 @@ const Form = ({ name, description, released, rating, image }) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    await axios.post("http://localhost:3001/videogames", input);
+    await axios.post("/videogames", input);
     // dispatch(addGame())
     console.log(input);
     setInput({
@@ -211,7 +191,8 @@ const Form = ({ name, description, released, rating, image }) => {
             onChange={changeGenresHandler}
             multiple={true}
           >
-            {allGenres.map((el) => (
+            {/* {allGenres.map((el, key) => ( */}
+                     {genres.map((el, key) => (
               <option value={`${el}`}>{el}</option>
             ))}
           </select>
@@ -233,7 +214,9 @@ const Form = ({ name, description, released, rating, image }) => {
               onChange={changePlatformsHandler}
               multiple={true}
             >
-              {allPlatforms.map((el) => (
+              {/* {allPlatforms.map((el, key) => ( */}
+              {platforms.map((el, key) => (
+
                 <option value={`${el}`}>{el}</option>
               ))}
             </select>

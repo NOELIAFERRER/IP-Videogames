@@ -1,0 +1,14 @@
+.container {
+    background-image: url("../../../public/images/footer.png");
+    background-size: cover;
+    width: 100vw;
+    height: 80px;
+    display: flex;  
+    justify-content: flex-end;
+    align-items: center;   
+}
+
+.link {
+    margin-right: 60px;
+    color: #FFEDC6;
+}
