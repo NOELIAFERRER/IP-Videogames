@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha -w ./tests/**/*.spec.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config ./webpack.config.js"
+
   },
   "author": "Henry",
   "license": "ISC",
