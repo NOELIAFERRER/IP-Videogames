@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGameDetails, resetGameDetails } from "../../redux/actions";
-import Details from "../Details/Details";
+import Details from "../../components/Details/Details";
 // import Details from "../Details/Details";
 import styles from "./GameDescription.module.css";
 
 const GameDescription = (props) => {
   const gameId = props.match.match.params.id;
   const gameDetail = useSelector((state) => state.gameDetail);
-  const { image, name, released, rating, description, genres, platforms } =
+  const { image, name, released, rating, description, genres, platforms, id } =
     gameDetail;
 
   const dispatch = useDispatch();
@@ -18,13 +18,14 @@ const GameDescription = (props) => {
     return () => {
       dispatch(resetGameDetails());
     };
-  }, [dispatch]);
+  }, [dispatch, gameId]);
 
   console.log(gameDetail);
 
   return (
     <div className={styles.container}>
       <Details
+        key= {id}
         image={image}
         name={name}
         released={released}

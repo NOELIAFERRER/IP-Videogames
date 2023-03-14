@@ -5,7 +5,6 @@ const { RAWG_APIKEY } = process.env;
 
 const getPlatforms = async () => {
 
-
     let resultDb = await Platform.findAll({
         where: {
             name: {
@@ -16,11 +15,8 @@ const getPlatforms = async () => {
 
     if (!resultDb.length) {
         const apiData = (await axios.get(`https://rawg.io/api/platforms?key=${RAWG_APIKEY}`))
-        
-        const result = apiData.data.results.map(p => {return {name: p.name }})
+        const result = apiData.data.results.map(platform => {return {name: platform.name }})
         resultDb = Platform.bulkCreate(result);
-        // resultDb= result
-        console.log('platforms:',result)
     }
         return resultDb
     }
@@ -28,12 +24,11 @@ const getPlatforms = async () => {
     
     const setPlatforms = async () => {
         const platform = await getPlatforms()
-    
-        platform.forEach(p => {
+        platform.forEach(platform => {
             Platform.findOrCreate({
-                where: { name: p.name}
+                where: { name: platform.name}
             })
-        })
+        })       
     }    
 
 module.exports = { getPlatforms, setPlatforms }

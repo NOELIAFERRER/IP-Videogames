@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useEffect } from 'react-redux'
-import styles from '../Navbar/Navbar.module.css'
+import styles from './Navbar.module.css'
 import { Link } from "react-router-dom";
 import { getGameByName } from "../../redux/actions";
 

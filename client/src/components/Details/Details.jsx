@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Details.module.css";
 
 const Details = ({
+  key,
   image,
   name,
   genres,
@@ -25,8 +26,8 @@ const Details = ({
             <div>{rating}</div>
 
             <div className={styles.info}>
-              {genres?.map((g, key) => (
-                <div className={styles.list}>{g}</div>
+              {genres?.map((g) => (
+                <div className={styles.list} key={g.key}>{g}</div>
               ))}
             </div>
             {/* <br />
@@ -46,8 +47,8 @@ const Details = ({
             <p>{description}</p>
           </div>
           <div className={styles.info}>
-            {platforms?.map((p, key) => (
-              <div className={styles.list}>{p}</div>
+            {platforms?.map((p) => (
+              <div className={styles.list} key={p.id}>{p}</div>
             ))}
           </div>
         </div>

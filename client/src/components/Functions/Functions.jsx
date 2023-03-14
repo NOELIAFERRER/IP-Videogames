@@ -60,7 +60,7 @@ const Functions = ({ setCurrentPage }) => {
         onChange={(e) => sortHandler(e)}
       >
         <option name="SORT A-Z" value="no order">
-          SORT by NAME
+          SORT
         </option>
         <option name="ascendent" value="ascendent">
           A-Z
@@ -77,7 +77,7 @@ const Functions = ({ setCurrentPage }) => {
         onChange={(e) => ratingHandler(e)}
       >
         <option name="SORT By Rating" id="no order">
-          SORT by RATING
+          RATING
         </option>
         <option name="high" id="hig" value="high">
           DESCENDING

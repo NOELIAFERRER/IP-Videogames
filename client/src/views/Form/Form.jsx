@@ -129,11 +129,11 @@ const Form = () => {
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <h3>AGREGAR VIDEOJUEGO</h3>
+        <h2 className={styles.title}>CREATE VIDEOGAME</h2>
         <form onSubmit={submitHandler}>
           <div className={styles.inner}>
             <label className={styles.label} htmlFor="nam">
-              NOMBRE
+              NAME
             </label>
             <input
               className={styles.input}
@@ -147,7 +147,7 @@ const Form = () => {
           </div>
           <div className={styles.inner}>
             <label className={styles.label} htmlFor="des">
-              DESCRIPCION
+              DESCRIPTION
             </label>
             <input
               className={styles.input}
@@ -161,7 +161,7 @@ const Form = () => {
           </div>
           <div className={styles.inner}>
             <label className={styles.label} htmlFor="">
-              FECHA DE LANZAMIENTO
+              RELEASED DATE
             </label>
             <input
               className={styles.input}
@@ -194,7 +194,7 @@ const Form = () => {
 
           <div className={styles.inner}>
             <label className={styles.label} htmlFor="img">
-              IMAGEN
+              IMAGE
             </label>
             <input
               className={styles.input}
@@ -208,7 +208,7 @@ const Form = () => {
 
           <div className={styles.selection}>
             <label className={styles.label} htmlFor="gen">
-              GENEROS{" "}
+              GENRES{" "}
             </label>
             <select
               className={styles.selector}
@@ -220,9 +220,7 @@ const Form = () => {
               {genres.map((el, key) => (
                 <option value={`${el}`}>{el}</option>
               ))}
-            </select>
-            {/* <input type='text' id='gen' onChange={changeGenresHandler} value={input.genres}/> */}
-            {/* <label htmlFor='add'>AGREGAR GENERO</label> */}
+            </select> 
             <input
               // className={styles.inputSelector}
               // type="text"
@@ -240,7 +238,7 @@ const Form = () => {
           </div>
           <div className={styles.selection}>
             <label className={styles.label} htmlFor="pla">
-              PLATAFORMAS{" "}
+              PLATFORMS{" "}
             </label>
             {/* <div className={styles.select}> */}
             {/* <div className={styles.ctor}> */}
@@ -280,8 +278,10 @@ const Form = () => {
           </div>
         </form>
       </div>
+      
+      {/******* AQUI QUIERO MOSTRAR LA CARD DEL JUEGO CREADO ********
+      
       <div className={styles.gameCard}>
-        {/* {error && <p>{error}</p>} */}
         {
           <Details
             image={input.image}
@@ -293,7 +293,7 @@ const Form = () => {
             platforms={input.platforms}
           />
         }
-      </div>
+      </div> */}
     </div>
   );
 };

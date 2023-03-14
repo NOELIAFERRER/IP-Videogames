@@ -18,6 +18,7 @@ const getGenres = async () => {
         const result = apiData.data.results.map(genre => {return {name: genre.name }})
         resultDb = Genre.bulkCreate(result);
         // resultDb = result
+        console.log('resultDb:', resultDb)
         console.log('genres:',result)
     }
     return resultDb;

@@ -49,7 +49,7 @@ const Home = () => {
 
         {/* <br /> */}
         <div className={styles.games}>
-          {currentGames.map((game, key) => (
+          {currentGames.map((game) => (
             <Link to={`/games/details/${game.id}`}>
               <Game 
                 className={styles.card}

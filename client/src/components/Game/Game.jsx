@@ -23,7 +23,7 @@ const Game = ({ image, name, id, genres, rating }) => {
       </div>
       <div className={styles.genres}>
         {genres?.map((g, key) => (
-          <div className={styles.genre}>{g}</div>
+          <div className={styles.genre} key={g.id}>{g}</div>
         ))}
       </div>
     </div>

@@ -64,8 +64,8 @@ const rootReducer = (state = initialState, action) => {
       };
     case GET_GAMES_BY_GENRE:
       const gamesUp = [...state.games]
-      const gamesFilterByGenre = action.payload === 'all'
-      ? gamesFilterByGenre = gamesUp
+      const gamesFilterByGenre = action.payload === 'genres'
+      ? state.allGames
       : gamesUp.filter(el => el.genres.includes(action.payload))
       // console.log(state.allGames)
       console.log(gamesFilterByGenre)
@@ -74,11 +74,12 @@ const rootReducer = (state = initialState, action) => {
         games: gamesFilterByGenre
       };
     case FILTER_GAMES:
+      const gamesUpdat = [...state.games];
       const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
       const gamesFiltered = action.payload === 'gameExist' 
       ? state.allGames
       // ? state.allGames.filter(game => regexExp.test(game.id) === false)
-      : state.allGames.filter(game => regexExp.test(game.id) === true)
+      : gamesUpdat.filter(game => regexExp.test(game.id) === true)
       console.log(gamesFiltered)
       return {
         ...state,
