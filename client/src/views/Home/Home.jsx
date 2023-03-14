@@ -35,21 +35,22 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.pages}>
+      {/* <div className={styles.pages}> */}
         <Pagination
           gamesXPage={gamesXPage}
           games={games.length}
           paging={paging}
         />
-      </div>
-      <div className={styles.home}>
-        <div className={styles.selectors}>
+      {/* </div> */}
+      <div className={styles.body}>
+        {/* <div className={styles.selectors}> */}
           <Functions setCurrentPage={setCurrentPage} />
-        </div>
+        {/* </div> */}
 
         {/* <br /> */}
         <div className={styles.games}>
           {currentGames.map((game) => (
+            <div className={styles.gameBox}>
             <Link to={`/games/details/${game.id}`}>
               <Game 
                 className={styles.card}
@@ -60,6 +61,7 @@ const Home = () => {
                 rating={game.rating}
               />
             </Link>
+            </div>
           ))}
         </div>
       </div>
