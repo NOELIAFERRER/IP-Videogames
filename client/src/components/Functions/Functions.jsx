@@ -53,7 +53,7 @@ const Functions = ({ setCurrentPage }) => {
   };
 
   return (
-    <div className={styles.selectors}>
+    <div className={styles.select}>
       <select
         className={styles.bars}
         name="sort"
@@ -70,12 +70,7 @@ const Functions = ({ setCurrentPage }) => {
         </option>
       </select>
 
-      <select
-        className={styles.bars}
-        name="sort"
-        id="sorRat"
-        onChange={(e) => ratingHandler(e)}
-      >
+      <select name="sort" id="sorRat" onChange={(e) => ratingHandler(e)}>
         <option name="SORT By Rating" id="no order">
           RATING
         </option>
@@ -83,7 +78,7 @@ const Functions = ({ setCurrentPage }) => {
           DESCENDING
         </option>
         <option name="low" id="low" value="low">
-         ASCENDING
+          ASCENDING
         </option>
       </select>
 
@@ -94,7 +89,7 @@ const Functions = ({ setCurrentPage }) => {
         onChange={(e) => genreHandler(e)}
       >
         <option name="genres" id="gen" value="genres">
-        ALL GAMES
+          ALL GAMES
         </option>
         {allGenres.map((el) => (
           <option value={`${el}`}>{el.toUpperCase()}</option>

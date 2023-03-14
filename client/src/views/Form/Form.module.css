@@ -33,7 +33,7 @@
   color: rgba(0, 0, 0, 0.364);
 }
 
-.inner {
+.input {
   padding: 5px;
   margin: 0 30px 0 30px;
   font-size: 10px;
@@ -44,7 +44,7 @@
   /* align-items: stretch; */
 }
 
-.label {
+.input label {
   /* width: 80px; */
   font-size: 14px;
   font-weight: 600;
@@ -54,7 +54,7 @@
   color: rgba(0, 0, 0, 0.718);
 }
 
-.input {
+.input input {
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   height: 34px;
@@ -70,13 +70,23 @@
   /* padding: 5px; */
 }
 
-.selector {
-  background-color: rgba(0, 0, 0, 0.15);
-  width: 80%; 
-  /* cursor: scroll; */
+.selection label { 
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 10px;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  color: rgba(0, 0, 0, 0.718);
 }
 
-.inputSelector {
+.selection select {
+  background-color: rgba(0, 0, 0, 0.15);
+  width: 80%; 
+  border-radius: 14px;
+  padding: 10px;  
+}
+
+.selection input {
   height: auto;
   padding: 10px;
   display: flex;
@@ -85,13 +95,13 @@
   justify-content: center;
 }
 
-.itemsSelected {
+.selection button{
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.592);
   width: 140px;
   height: 28px;
-  margin: 4px;
+  margin: 10px;
 }
 
 .error {
@@ -119,13 +129,7 @@
 .btn:hover {
   border-radius: 17px;
   background: linear-gradient(315deg, #352929, #111111);
-  /* box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde; */
-  color: #ffedc6;
+   color: #ffedc6;
   font-style: bold;
 }
 
-/* .gameCard {
- background-color: aqua; 
- width: 30%;
- display: flex; 
-} */

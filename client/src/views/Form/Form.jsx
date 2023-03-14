@@ -131,12 +131,9 @@ const Form = () => {
       <div className={styles.form}>
         <h2 className={styles.title}>CREATE VIDEOGAME</h2>
         <form onSubmit={submitHandler}>
-          <div className={styles.inner}>
-            <label className={styles.label} htmlFor="nam">
-              NAME
-            </label>
+          <div className={styles.input}>
+            <label htmlFor="nam">NAME</label>
             <input
-              className={styles.input}
               type="text"
               id="nam"
               name="name"
@@ -144,13 +141,9 @@ const Form = () => {
               value={input.name}
             />
             {error.name && <p>{error.name}</p>}
-          </div>
-          <div className={styles.inner}>
-            <label className={styles.label} htmlFor="des">
-              DESCRIPTION
-            </label>
+
+            <label htmlFor="des">DESCRIPTION</label>
             <input
-              className={styles.input}
               type="text"
               id="des"
               name="description"
@@ -158,13 +151,9 @@ const Form = () => {
               value={input.description}
             />
             {error.description && <p>{error.description}</p>}
-          </div>
-          <div className={styles.inner}>
-            <label className={styles.label} htmlFor="">
-              RELEASED DATE
-            </label>
+
+            <label htmlFor="">RELEASED DATE</label>
             <input
-              className={styles.input}
               type="text"
               datepicker="true"
               datepicker_format="YYYY-MM-YY"
@@ -176,13 +165,9 @@ const Form = () => {
               value={input.released}
             />
             {error.released && <p>{error.released}</p>}
-          </div>
-          <div className={styles.inner}>
-            <label className={styles.label} htmlFor="rat">
-              RATING
-            </label>
+
+            <label htmlFor="rat">RATING</label>
             <input
-              className={styles.input}
               type="text"
               id="rat"
               name="rating"
@@ -190,14 +175,9 @@ const Form = () => {
               value={input.rating}
             />
             {error.rating && <p>{error.rating}</p>}
-          </div>
 
-          <div className={styles.inner}>
-            <label className={styles.label} htmlFor="img">
-              IMAGE
-            </label>
+            <label htmlFor="img">IMAGE</label>
             <input
-              className={styles.input}
               type="text"
               id="img"
               name="image"
@@ -207,11 +187,8 @@ const Form = () => {
           </div>
 
           <div className={styles.selection}>
-            <label className={styles.label} htmlFor="gen">
-              GENRES{" "}
-            </label>
+            <label htmlFor="gen">GENRES </label>
             <select
-              className={styles.selector}
               name="genres"
               id="gen"
               onChange={changeGenresHandler}
@@ -220,9 +197,8 @@ const Form = () => {
               {genres.map((el, key) => (
                 <option value={`${el}`}>{el}</option>
               ))}
-            </select> 
+            </select>
             <input
-              // className={styles.inputSelector}
               // type="text"
               type="hidden"
               id="add"
@@ -230,47 +206,37 @@ const Form = () => {
               onChange={changeHandler}
               // value={input.genres}
             />
-            <div className={styles.inputSelector}>
-              {input.genres?.map((g, key) => (
-                <button className={styles.itemsSelected}>*{g}</button>
-              ))}
-            </div>
-          </div>
-          <div className={styles.selection}>
-            <label className={styles.label} htmlFor="pla">
-              PLATFORMS{" "}
-            </label>
-            {/* <div className={styles.select}> */}
-            {/* <div className={styles.ctor}> */}
+
+            {input.genres?.map((g, key) => (
+              <button>{g}</button>
+            ))}
+
+            <label htmlFor="pla">PLATFORMS </label>
+
             <select
-              className={styles.selector}
               name="platforms"
               id="pla"
               onChange={changePlatformsHandler}
               multiple={true}
             >
-              {/* {allPlatforms.map((el, key) => ( */}
               {platforms.map((el, key) => (
                 <option value={`${el}`}>{el}</option>
               ))}
             </select>
-            {/* </div> */}
-            <div className={styles.inputSelected}>
-              <input
-                // className={styles.inputSelector}
-                // type="text"
-                type="hidden"
-                id="plat"
-                name="platforms"
-                onChange={changeAddHandler}
-                // value={input.platforms}
-              />
-              <div className={styles.inputSelector}>
-                {input.platforms?.map((p, key) => (
-                  <button className={styles.itemsSelected}>*{p}</button>
-                ))}
-              </div>
-            </div>
+
+            <input
+              // type="text"
+              type="hidden"
+              id="plat"
+              name="platforms"
+              onChange={changeAddHandler}
+              // value={input.platforms}
+            />
+
+            {input.platforms?.map((p, key) => (
+              <button>{p}</button>
+            ))}
+
             <br />
             <button className={styles.btn} type="submit" disable={error}>
               CREATE
@@ -278,7 +244,7 @@ const Form = () => {
           </div>
         </form>
       </div>
-      
+
       {/******* AQUI QUIERO MOSTRAR LA CARD DEL JUEGO CREADO ********
       
       <div className={styles.gameCard}>

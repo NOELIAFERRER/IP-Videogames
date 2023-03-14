@@ -1,15 +1,10 @@
-.selectors {
-    color: rgb(43, 226, 156);
-    display: flex;
-    flex-direction: column;
-    /* width: 15vw; */
-  }
+   .select {
+    position: relative;
+   }
   
-  .bars {
+   .select select {
     /* min-width: 100px;
-    max-width: 180px; */
-    
-    /* width: minmax(100px, 140px); */
+    max-width: 180px; */   
     width: 180px;
     height: 44px;
     padding: 2%;
@@ -23,12 +18,25 @@
     color: black;
     font-size: 14px;
     font-family: Helvetica;
+    position: relative;
   }
   
-  .bars:hover {
+  .select select:hover {
     border-radius: 17px;
     background: linear-gradient(315deg, #352929, #111111);
     box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
     color: #FFEDC6; 
     font-style: bold;
+  }
+
+  .select option {
+    background-color: rgb(80, 79, 79);
+    color: #FFEDC6; 
+    height: 34px;
+    width: 160px;
+    border-radius: 14px;
+    margin-left: 30px;
+    padding-left: 20px;
+    /* text-align: center; */
+    /* position: relative; */
   }
