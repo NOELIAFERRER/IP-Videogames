@@ -3,7 +3,7 @@ import Home from './views/Home/Home';
 import Navbar from './views/Navbar/Navbar';
 import Form from './views/Form/Form';
 import Landing from './views/Landing/Landing';
-import GameDetail from './components/Details/GameDetail';
+import GameDescription from './components/GameDescription/GameDescription';
 import { Route } from 'react-router-dom';
 // import Game from './components/Game';
 // import Details from './components/Details';
@@ -31,7 +31,7 @@ function App() {
       {/* <Route path='/email'> <Email /></Route> */}
       <Route
         path='/games/details/:id'
-        render={(match) => <GameDetail match={match}/>}
+        render={(match) => <GameDescription match={match}/>}
       />
       <Route path='/games'>
         <Footer />

@@ -1,6 +1,18 @@
 .container {
+  background-image: url("../../../public/images/form.png");
+  background-size: cover;
+  width: 100vw;
+  height: auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.description {
   width: 50vw;
   min-width: 400px;
+  max-width: 800px;
   height: auto;
   margin: 10px;
   padding: 30px;
@@ -22,6 +34,7 @@
 .header {
   display: flex;
   flex-wrap: wrap;
+  gap: 40px;
   justify-content: center;
 }
 /* display: flex;

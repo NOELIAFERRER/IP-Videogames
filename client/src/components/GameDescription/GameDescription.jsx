@@ -1,17 +1,40 @@
-import React from "react";
-import styles from "./Details.module.css";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getGameDetails, resetGameDetails } from "../../redux/actions";
+import Details from "../Details/Details";
+// import Details from "../Details/Details";
+import styles from "./GameDescription.module.css";
 
-const Details = ({
-  image,
-  name,
-  genres,
-  description,
-  released,
-  rating,
-  platforms,
-}) => {
+const GameDescription = (props) => {
+  const gameId = props.match.match.params.id;
+  const gameDetail = useSelector((state) => state.gameDetail);
+  const { image, name, released, rating, description, genres, platforms } =
+    gameDetail;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGameDetails(gameId));
+    return () => {
+      dispatch(resetGameDetails());
+    };
+  }, [dispatch]);
+
+  console.log(gameDetail);
+
   return (
-    <div>
+    <div className={styles.container}>
+      <Details
+        image={image}
+        name={name}
+        released={released}
+        rating={rating}
+        description={description}
+        genres={genres}
+        platforms={platforms}
+      />
+
+      {/* 
       <div className={styles.description}>
         <div className={styles.header}>
           <img
@@ -19,7 +42,6 @@ const Details = ({
             src={image}
             alt="portada del videojuego"
           />
-          {/* <div className={styles.title}> */}
           <div className={styles.name}>
             <div className={styles.title}>{name}</div>
             <div>{rating}</div>
@@ -29,8 +51,7 @@ const Details = ({
                 <div className={styles.list}>{g}</div>
               ))}
             </div>
-            {/* <br />
-            <br /> */}
+
             <div className={styles.released}>
               <div>
                 <p>Lanzamiento: </p>
@@ -51,9 +72,13 @@ const Details = ({
             ))}
           </div>
         </div>
+      </div> */}
+
+      <div>
+        <h3>aca vienen los sugeridos</h3>
       </div>
     </div>
   );
 };
 
-export default Details;
+export default GameDescription;

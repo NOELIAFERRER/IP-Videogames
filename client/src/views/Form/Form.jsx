@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Details from "../../components/Details/Details";
+// import GameDetail from "../../components/GameDetail/GameDetail";
 // import Select from 'react-select'
 import { getGenres, getPlatforms } from "../../redux/actions";
 import styles from "../Form/Form.module.css";
@@ -8,7 +10,7 @@ import styles from "../Form/Form.module.css";
 const Form = () => {
   // const allGames = useSelector((state) => state.allGames);
   const genres = useSelector((state) => state.genres);
-  const platforms = useSelector((state) => state.platforms)
+  const platforms = useSelector((state) => state.platforms);
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -16,20 +18,20 @@ const Form = () => {
     description: "",
     released: "",
     rating: "",
-    image:"",
-    genres:[],
-    platforms: []
+    image: "",
+    genres: [],
+    platforms: [],
   });
 
   const [error, setError] = useState({});
 
   useEffect(() => {
-    dispatch(getGenres())
-  }, [dispatch])
+    dispatch(getGenres());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getPlatforms())
-  }, [dispatch])
+    dispatch(getPlatforms());
+  }, [dispatch]);
 
   const validateInput = (input) => {
     console.log(input.name);
@@ -114,11 +116,11 @@ const Form = () => {
     console.log(input);
     setInput({
       name: "",
-      image:"",
+      image: "",
       description: "",
       released: "",
       rating: "",
-      genres:[],
+      genres: [],
       platforms: [],
     });
     alert("Datos enviados correctamente");
@@ -126,89 +128,124 @@ const Form = () => {
 
   return (
     <div className={styles.container}>
-      <h3>AGREGAR VIDEOJUEGO</h3>
-      <form onSubmit={submitHandler}>
-        <div className={styles.inner}>
-          <label htmlFor="nam">NOMBRE</label>
-          <input
-            type="text"
-            id="nam"
-            name="name"
-            onChange={changeHandler}
-            value={input.name}
-          />
-          {error.name && <p>{error.name}</p>}
-        </div>
-        <div className={styles.inner}>
-          <label htmlFor="des">DESCRIPCION</label>
-          <input
-            type="text"
-            id="des"
-            name="description"
-            onChange={changeHandler}
-            value={input.description}
-          />
-          {error.description && <p>{error.description}</p>}
-        </div>
-        <div className={styles.inner}>
-          <label htmlFor="">FECHA DE LANZAMIENTO</label>
-          <input
-            type="text"
-            datepicker="true"
-            datepicker_format="YYYY-MM-YY"
-            // data-date-format='YYYY-MM-DD'
-            id="rel"
-            name="released"
-            placeholder="YYYY-MM-DD"
-            onChange={changeHandler}
-            value={input.released}
-          />
-          {error.released && <p>{error.released}</p>}
-        </div>
-        <div className={styles.inner}>
-          <label htmlFor="rat">RATING</label>
-          <input
-            type="text"
-            id="rat"
-            name="rating"
-            onChange={changeHandler}
-            value={input.rating}
-          />
-          {error.rating && <p>{error.rating}</p>}
-        </div>
+      <div className={styles.form}>
+        <h3>AGREGAR VIDEOJUEGO</h3>
+        <form onSubmit={submitHandler}>
+          <div className={styles.inner}>
+            <label className={styles.label} htmlFor="nam">
+              NOMBRE
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              id="nam"
+              name="name"
+              onChange={changeHandler}
+              value={input.name}
+            />
+            {error.name && <p>{error.name}</p>}
+          </div>
+          <div className={styles.inner}>
+            <label className={styles.label} htmlFor="des">
+              DESCRIPCION
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              id="des"
+              name="description"
+              onChange={changeHandler}
+              value={input.description}
+            />
+            {error.description && <p>{error.description}</p>}
+          </div>
+          <div className={styles.inner}>
+            <label className={styles.label} htmlFor="">
+              FECHA DE LANZAMIENTO
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              datepicker="true"
+              datepicker_format="YYYY-MM-YY"
+              // data-date-format='YYYY-MM-DD'
+              id="rel"
+              name="released"
+              placeholder="YYYY-MM-DD"
+              onChange={changeHandler}
+              value={input.released}
+            />
+            {error.released && <p>{error.released}</p>}
+          </div>
+          <div className={styles.inner}>
+            <label className={styles.label} htmlFor="rat">
+              RATING
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              id="rat"
+              name="rating"
+              onChange={changeHandler}
+              value={input.rating}
+            />
+            {error.rating && <p>{error.rating}</p>}
+          </div>
 
-        <div className={styles.inner}>
-          <label htmlFor="img">IMAGEN</label>
-          <input type="text" id="img" name="image" onChange={changeHandler} value={input.image} />
-        </div>
+          <div className={styles.inner}>
+            <label className={styles.label} htmlFor="img">
+              IMAGEN
+            </label>
+            <input
+              className={styles.input}
+              type="text"
+              id="img"
+              name="image"
+              onChange={changeHandler}
+              value={input.image}
+            />
+          </div>
 
-        <div className={styles.select}>
-          <label htmlFor="gen">GENEROS </label>
-
-          <select
-            name="genres"
-            id="gen"
-            onChange={changeGenresHandler}
-            multiple={true}
-          >
-            {/* {allGenres.map((el, key) => ( */}
-                     {genres.map((el, key) => (
-              <option value={`${el}`}>{el}</option>
-            ))}
-          </select>
-          {/* <input type='text' id='gen' onChange={changeGenresHandler} value={input.genres}/> */}
-          {/* <label htmlFor='add'>AGREGAR GENERO</label> */}
-          <input
-            type="text"
-            id="add"
-            name="genres"
-            onChange={changeHandler}
-            value={input.genres}
-          />
-          {/* <input type='checkbox' id='add' name='add genres' onChange={changeCheckHandler} /> */}
-          <div className={styles.select}>
-            <label htmlFor="pla">PLATAFORMAS </label>
+          <div className={styles.selection}>
+            <label className={styles.label} htmlFor="gen">
+              GENEROS{" "}
+            </label>
             <select
+              className={styles.selector}
+              name="genres"
+              id="gen"
+              onChange={changeGenresHandler}
+              multiple={true}
+            >
+              {genres.map((el, key) => (
+                <option value={`${el}`}>{el}</option>
+              ))}
+            </select>
+            {/* <input type='text' id='gen' onChange={changeGenresHandler} value={input.genres}/> */}
+            {/* <label htmlFor='add'>AGREGAR GENERO</label> */}
+            <input
+              // className={styles.inputSelector}
+              // type="text"
+              type="hidden"
+              id="add"
+              name="genres"
+              onChange={changeHandler}
+              // value={input.genres}
+            />
+            <div className={styles.inputSelector}>
+              {input.genres?.map((g, key) => (
+                <button className={styles.itemsSelected}>*{g}</button>
+              ))}
+            </div>
+          </div>
+          <div className={styles.selection}>
+            <label className={styles.label} htmlFor="pla">
+              PLATAFORMAS{" "}
+            </label>
+            {/* <div className={styles.select}> */}
+            {/* <div className={styles.ctor}> */}
+            <select
+              className={styles.selector}
               name="platforms"
               id="pla"
               onChange={changePlatformsHandler}
@@ -216,25 +253,47 @@ const Form = () => {
             >
               {/* {allPlatforms.map((el, key) => ( */}
               {platforms.map((el, key) => (
-
                 <option value={`${el}`}>{el}</option>
               ))}
             </select>
-            <input
-              type="text"
-              id="plat"
-              name="platforms"
-              onChange={changeAddHandler}
-              value={input.platforms}
-            />
+            {/* </div> */}
+            <div className={styles.inputSelected}>
+              <input
+                // className={styles.inputSelector}
+                // type="text"
+                type="hidden"
+                id="plat"
+                name="platforms"
+                onChange={changeAddHandler}
+                // value={input.platforms}
+              />
+              <div className={styles.inputSelector}>
+                {input.platforms?.map((p, key) => (
+                  <button className={styles.itemsSelected}>*{p}</button>
+                ))}
+              </div>
+            </div>
+            <br />
+            <button className={styles.btn} type="submit" disable={error}>
+              CREATE
+            </button>
           </div>
-          <br />
-          <button className={styles.btn} type="submit" disable={error}>
-            CREATE
-          </button>
-        </div>
-      </form>
-      <div>{/* {error && <p>{error}</p>} */}</div>
+        </form>
+      </div>
+      <div className={styles.gameCard}>
+        {/* {error && <p>{error}</p>} */}
+        {
+          <Details
+            image={input.image}
+            name={input.name}
+            genres={input.genres}
+            description={input.description}
+            released={input.released}
+            rating={input.rating}
+            platforms={input.platforms}
+          />
+        }
+      </div>
     </div>
   );
 };

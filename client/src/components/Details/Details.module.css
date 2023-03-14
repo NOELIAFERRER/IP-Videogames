@@ -1,134 +1,100 @@
-.container {
-    width: 800px;
-    height: 600px;
-    margin: 10px;
-    padding: 30px;
-    border-radius: 36px;
-    background: #363636c0;
-    box-shadow: inset 5px 5px 10px #121212,
-            inset -5px -5px 10px #121212c0;
-    background-color:#121212c0;
- 
-    color: #FFEDC6;  
-    font-family:Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-            
-    /* background-color: rgb(209, 139, 26);
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
+.description {
+  width: 50vw;
+  min-width: 400px;
+  max-width: 800px;
+  height: auto;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 36px;
+  background: #363636c0;
+  box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0;
+  background-color: #121212c0;
+  color: #ffedc6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler,
+    "Arial Narrow Bold", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .header {
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }
 
-
-.img{
-    width: 380px;
-    height: 280px;
-    display: flex;
-    align-self: self-start;
-    border-radius: 30px;
-   
-    /* background: #363636c0; */
-    background: linear-gradient(145deg, #422b2b, #483232);
-
-    box-shadow: inset 5px 5px 10px #121212,
-            inset -5px -5px 10px #121212c0;    
+.img {
+  width: 380px;
+  height: 280px;
+  display: flex;
+  align-self: self-start;
+  border-radius: 30px;
+  text-align:center;
+  font-size: 14px; 
+  background: linear-gradient(145deg, #422b2b, #483232);
+  box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0;
 }
 
-
-.title{
-    display: flex;
-    flex-direction: column;
-    /* justify-content: flex-start; */
-    align-self: flex-start;
+.name {
+  align-self: center;
+  /* margin: 10px; */
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+  /* font-stretch: ultra-expanded; */
+  align-items: center;
 }
 
-
-.name{
-    margin: 0px 0px 0px 20px;
-    font-size: 32px;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-stretch: ultra-expanded;
-
+.title {
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
-.boxinfo{
-    font-size: 16px;
-    margin: 0px 0px 0px 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+.info {
+  font-size: 80%;
+  margin: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
 }
 
-.info{
-    margin: -4px 0px;
-    font-size: 14px;
-    font-family: helvetica;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
+.list {
+  border: 5px solid black;
+  background-color: black;
+  padding: 4px;
+  border-radius: 12px;
+  font-size: 14px;
 }
 
-
-.listTitle{
-    margin: -4px 0px;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.released {
+  font-size: 16px;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-
-.listInfo{
-    font-size: 12px;
-    margin: 0px 0px 0px 20px;
-      display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-
-.detail {    
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    font-size: 14px;
-    font-family: helvetica;
-    align-items: center;
-    flex-wrap: wrap;
-    text-align: justify;
-}
-   
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
-
-.lines{
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    /* align-self: flex-start; */
-    /* justify-content: space-between; */
-    align-items: flex-start; 
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-size: 16px;
+  font-family: helvetica;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: justify;
 }
-
