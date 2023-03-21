@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGames, getGameDetails, resetGameDetails } from "../../redux/actions";
+import {
+  getAllGames,
+  getGameDetails,
+  resetGameDetails,
+} from "../../redux/actions";
 import Details from "../../components/Details/Details";
-import GamesList from "../../components/GamesList/GamesList";
+import SimilarGames from "../../components/SimilarGames/SimilarGames";
 // import Details from "../Details/Details";
 import styles from "./GameDescription.module.css";
 
@@ -33,7 +37,10 @@ const GameDescription = (props) => {
 
   const similar = genres
     ?.map((genre) => allGames.filter((game) => game.genres.includes(genre)))
-    .flat();
+    .flat()
+   
+  
+    
   console.log("similar => ", similar);
 
   //************acá termina************/
@@ -91,10 +98,10 @@ const GameDescription = (props) => {
         </div>
       </div> */}
       <div>
-        {similar?.map((g) => (
-          <p>{g.name}</p>
-          // <GamesList genres={genres}/>
-        ))}
+        {/* {similar?.map((g) => ( */}
+          {/* // <p>{g.name}</p> */}
+          <SimilarGames similar={similar}/>
+        {/* ))} */}
       </div>
     </div>
   );
