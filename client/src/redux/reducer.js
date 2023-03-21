@@ -10,7 +10,8 @@ import {
   GET_GAMES_BY_GENRE,
   FILTER_GAMES,
   ADD_GAME,
-  RESET_DETAILS
+  RESET_DETAILS,
+  // GET_SIMILAR_GAMES
 } from "./actions"
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   genres: [],
   platforms: [],
   gameDetail: {},
+  // similarGames: [],
   error: {}
 }
 
@@ -75,11 +77,15 @@ const rootReducer = (state = initialState, action) => {
       };
     case FILTER_GAMES:
       const gamesUpdat = [...state.games];
-      const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-      const gamesFiltered = action.payload === 'gameExist' 
-      ? state.allGames
+      const regexExp = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/gi;
+
+      const gamesFiltered = action.payload === 'createdGames' 
+      ? gamesUpdat.filter(game => regexExp.test(game.id))
+     
       // ? state.allGames.filter(game => regexExp.test(game.id) === false)
-      : gamesUpdat.filter(game => regexExp.test(game.id) === true)
+      // : gamesUpdat.filter(game => regexExp.test(game.id) === true)
+      : gamesUpdat
+
       console.log(gamesFiltered)
       return {
         ...state,
@@ -87,10 +93,11 @@ const rootReducer = (state = initialState, action) => {
       };
     case SORT_GAMES:
          const gamesUpdated = [...state.games];
-         const gamesSorted = action.payload === 'ascendent'
-         ? gamesUpdated.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+         let gamesSorted = [];
+         action.payload === 'ascendent'
+         ? gamesSorted = gamesUpdated.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
          : action.payload === 'descendent'
-         ? gamesUpdated.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
+         ? gamesSorted =  gamesUpdated.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
          : gamesSorted = gamesUpdated;
     
       return {
@@ -99,12 +106,13 @@ const rootReducer = (state = initialState, action) => {
       };
     case SORT_GAMES_BY_RATING:
         const gamesUpd = [...state.games];
-        const gamesSortedByRating = action.payload === 'high'
+        let gamesSortedByRating = [];
+        action.payload === 'high'
         ? gamesUpd.sort((a, b) => b.rating - a.rating)
         : action.payload === 'low'
         ? gamesUpd.sort((a, b) => a.rating - b.rating)
         : gamesSortedByRating = gamesUpd;
-      console.log(gamesSortedByRating)
+      // console.log(gamesSortedByRating)
       return {
         ...state,
         games: gamesSortedByRating
@@ -118,6 +126,32 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         gameDetail: {}
       }
+    // case GET_SIMILAR_GAMES:
+    //   const gamesUpdate = [...state.allGames]
+    //   const { genres } = state.gameDetail
+      // let gamesSelected = []
+      // for(let i=0; i<action.payload.length; i++){
+      //   gamesSelected= gamesUpdate.filter(g => g.genres.includes(action.payload[i]))
+      // }
+
+      // const gamesSelection = action.payload.map(gameGenre => gamesUpdate.filter(games => games.genre.includes(gameGenre))).flat()
+      // const gamesSelection = genres.map(genre => gamesUpdate.filter(game => game.genres.includes(genre))).flat()
+      // const gamesSelection =action.payload.map(genre => gamesUpdate.filter(game => game.genres.includes(genre))).flat()
+
+
+        // console.log('gamesSelected:',gamesSelected)
+
+      // const gameSelected = state.gameDetail
+      // const similarGames = gameSelected.genres.length = 1 
+      // ? state.allGames.filter(g => g.genres.includes(gameSelected.genres.name)).slice(0, 6)
+      // : state.allGames
+      // console.log('state.gameDetail.genres =>', state.gameDetail.genres)
+      // console.log('gamesUpdate => ', gamesUpdate)
+      // console.log('gamesSelection',gamesSelection)
+      // return{
+      //   ...state,
+      //   similarGames: gamesSelection
+      // }
     case ERROR:
       return {
         ...state,

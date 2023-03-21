@@ -12,6 +12,7 @@ export const GET_GAMES_BY_GENRE = "GET_GAMES_BY_GENRE";
 export const FILTER_GAMES = "FILTER_GAMES";
 export const ADD_GAME = "ADD_GAME";
 export const RESET_DETAILS = "RESET_DETAILS";
+export const GET_SIMILAR_GAMES = "GET_SIMILAR_GAMES";
 
 export const getAllGames = () => {
   return async function (dispatch) {
@@ -60,7 +61,7 @@ export const getGameDetails = (id) => {
         `/videogames/${id}`
       );
       const gameDetail = response.data;
-      console.log(gameDetail);
+      // console.log(gameDetail);
       dispatch({
         type: GET_GAME_DETAILS,
         payload: gameDetail,
@@ -205,3 +206,20 @@ export const resetGameDetails = () => {
     }
   };
 };
+
+
+// export const getSimilarGames = (genres) => {
+//   return (dispatch) => {
+//     try {
+//       dispatch({
+//         type: GET_SIMILAR_GAMES,
+//         payload: genres     
+//       })
+//     } catch (error) {
+//       dispatch({
+//         type: ERROR,
+//         payload: error        
+//       })      
+//     }
+//   }
+// }

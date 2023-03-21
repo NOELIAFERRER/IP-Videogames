@@ -42,7 +42,6 @@ const Functions = ({ setCurrentPage }) => {
   const sortHandler = (event) => {
     event.preventDefault();
     dispatch(sortGames(event.target.value));
-
     setCurrentPage(1);
   };
 
@@ -101,7 +100,7 @@ const Functions = ({ setCurrentPage }) => {
         id="fil"
         onChange={(e) => filterHandler(e)}
       >
-        <option name="gameAd" id="exi" value="gameAd">
+        <option name="gameAd" id="exi" value="createdGames">
           CREATED GAMES
         </option>
         <option name="gameExist" id="add" value="gameExist">

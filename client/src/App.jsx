@@ -14,7 +14,9 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import GameDescription from './views/GameDescription/GameDescription';
 
-axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
+// axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
+axios.defaults.baseURL = 'http://localhost:3001';
+
 
 function App() {
   return (

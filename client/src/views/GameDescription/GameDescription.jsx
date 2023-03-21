@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGameDetails, resetGameDetails } from "../../redux/actions";
+import { getAllGames, getGameDetails, resetGameDetails } from "../../redux/actions";
 import Details from "../../components/Details/Details";
+import GamesList from "../../components/GamesList/GamesList";
 // import Details from "../Details/Details";
 import styles from "./GameDescription.module.css";
 
 const GameDescription = (props) => {
   const gameId = props.match.match.params.id;
+  //preparo para los juegos similares
+  const allGames = useSelector((state) => state.allGames);
+
   const gameDetail = useSelector((state) => state.gameDetail);
   const { image, name, released, rating, description, genres, platforms, id } =
     gameDetail;
@@ -20,12 +24,24 @@ const GameDescription = (props) => {
     };
   }, [dispatch, gameId]);
 
-  console.log(gameDetail);
+  // console.log(gameDetail);
+
+  //*******preparo para los juegos similares**********
+  useEffect(() => {
+    if (!allGames.length) dispatch(getAllGames());
+  }, [dispatch]);
+
+  const similar = genres
+    ?.map((genre) => allGames.filter((game) => game.genres.includes(genre)))
+    .flat();
+  console.log("similar => ", similar);
+
+  //************acá termina************/
 
   return (
     <div className={styles.container}>
       <Details
-        key= {id}
+        key={id}
         image={image}
         name={name}
         released={released}
@@ -74,9 +90,11 @@ const GameDescription = (props) => {
           </div>
         </div>
       </div> */}
-
       <div>
-        <h3>aca vienen los sugeridos</h3>
+        {similar?.map((g) => (
+          <p>{g.name}</p>
+          // <GamesList genres={genres}/>
+        ))}
       </div>
     </div>
   );
