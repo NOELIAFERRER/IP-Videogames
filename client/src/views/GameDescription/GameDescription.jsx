@@ -33,15 +33,18 @@ const GameDescription = (props) => {
   //*******preparo para los juegos similares**********
   useEffect(() => {
     if (!allGames.length) dispatch(getAllGames());
-  }, [dispatch]);
+  }, [dispatch, allGames.length]);
 
+  //filtro los juegos que tienen géneros similares a los del juego elegido
   const similar = genres
-    ?.map((genre) => allGames.filter((game) => game.genres.includes(genre)))
+    ?.map((genre) => allGames.filter((game) => game.genres.includes(genre) 
+    && game.name !== name
+    ))
     .flat()
    
   
     
-  console.log("similar => ", similar);
+  // console.log("similar => ", similar);
 
   //************acá termina************/
 
@@ -100,7 +103,7 @@ const GameDescription = (props) => {
       <div>
         {/* {similar?.map((g) => ( */}
           {/* // <p>{g.name}</p> */}
-          <SimilarGames similar={similar}/>
+          <SimilarGames similar={similar} name={name}/>
         {/* ))} */}
       </div>
     </div>
