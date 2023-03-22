@@ -1,54 +1,47 @@
 import React, { useEffect } from "react";
 import Game from "../Game/Game";
-import { getAllGames} from "../../redux/actions";
+import { getAllGames } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const SimilarGames = ( {similar}) => {
+const SimilarGames = ({ similar }) => {
+  const gameListed = {};
+  
+  // ordeno alfabéticamente los nombres de todos los juegos similares
+  const gamesName = similar
+    ?.map((el) => el.name)
+    .sort((a, b) => {
+      if (a.toLowerCase() > b.toLowerCase()) return 1;
+      if (a.toLowerCase() < b.toLowerCase()) return -1;
+      else return 0;
+    });
+  console.log("gamesName=>", gamesName);
 
-//     const allGames = useSelector((state) => state.allGames)
-//   const dispatch = useDispatch();
+  // elimino duplicados
+  const gamesSimilar = [...new Set(gamesName)];
+  console.log("gamesSimilar=>", gamesSimilar);
 
-//   useEffect(() => {
-//     if(!allGames.length)
-//     dispatch(getAllGames())
-//   }, [dispatch])
+  //guardo en un objeto los juegos y les asigno una cantidad = 1
+  const gamesObject = { };
+  const similarGames = [];
+  gamesSimilar.forEach((el) => similarGames.push(gamesObject[el] = 1));
+  console.log("similarGames=>", similarGames);
+  console.log('gamesObject=>', gamesObject)
 
+  // cuento la cantidad de juegos similares que están repetidos
+  for(let i = 0; i < gamesName.length; i++){
+    if(gamesName[i+1] === gamesName[i]){
+      console.log('gamesName[i]', gamesName[i])
+      ++gamesObject[gamesName[i]]
+    }
+  } 
+  console.log('gamesObjectTotal=>', gamesObject)
+  
 
-//  const similar = genres?.map(genre => allGames.filter(game => game.genres.includes(genre))).flat();
-//   console.log('similar => ', similar)
-
-// const gameListed = {};
-// similar.forEach((el) => {
-//   if(!gameListed[el]){
-//     gameListed[el] = 1
-//   } else {
-//      gameListed[el] ++
-//   }
-// });
-
-
-// const gamesListed = []
-// for(const el in gameListed) {
-//   gamesListed.push({el, gameListed: gameListed[el]})
-// }
-
-// //ordeno
-// gamesListed.sort((a,b) => b.gameListed - a.gameListed)
-
-// const similarGames = [];
-// gamesListed.forEach((el) => {
-//   for(let i = 0; i < el.gameListed; i++){
-//     similarGames.push(Number(el.gameListed))
-//   }
-// });
-
-// console.log('similarGames => ', similarGames)
 
 
   return (
     <div>
-      {similar?.map(el => (
-     
+      {similar?.map((el) => (
         // <div>
         <p> {el.name} </p>
 
