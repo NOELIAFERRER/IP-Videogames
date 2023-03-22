@@ -7,7 +7,6 @@ import {
 } from "../../redux/actions";
 import Details from "../../components/Details/Details";
 import SimilarGames from "../../components/SimilarGames/SimilarGames";
-// import Details from "../Details/Details";
 import styles from "./GameDescription.module.css";
 
 const GameDescription = (props) => {
@@ -28,7 +27,6 @@ const GameDescription = (props) => {
     };
   }, [dispatch, gameId]);
 
-  // console.log(gameDetail);
 
   //*******preparo para los juegos similares**********
   useEffect(() => {
@@ -37,16 +35,12 @@ const GameDescription = (props) => {
 
   //filtro los juegos que tienen géneros similares a los del juego elegido
   const similar = genres
-    ?.map((genre) => allGames.filter((game) => game.genres.includes(genre) 
-    && game.name !== name
-    ))
-    .flat()
-   
-  
-    
-  // console.log("similar => ", similar);
-
-  //************acá termina************/
+    ?.map((genre) =>
+      allGames.filter(
+        (game) => game.genres.includes(genre) && game.name !== name
+      )
+    )
+    .flat();
 
   return (
     <div className={styles.container}>
@@ -61,50 +55,8 @@ const GameDescription = (props) => {
         platforms={platforms}
       />
 
-      {/* 
-      <div className={styles.description}>
-        <div className={styles.header}>
-          <img
-            className={styles.img}
-            src={image}
-            alt="portada del videojuego"
-          />
-          <div className={styles.name}>
-            <div className={styles.title}>{name}</div>
-            <div>{rating}</div>
-
-            <div className={styles.info}>
-              {genres?.map((g, key) => (
-                <div className={styles.list}>{g}</div>
-              ))}
-            </div>
-
-            <div className={styles.released}>
-              <div>
-                <p>Lanzamiento: </p>
-              </div>
-              <div>
-                <p>{released}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.footer}>
-          <div className={styles.detail}>
-            <p>{description}</p>
-          </div>
-          <div className={styles.info}>
-            {platforms?.map((p, key) => (
-              <div className={styles.list}>{p}</div>
-            ))}
-          </div>
-        </div>
-      </div> */}
       <div>
-        {/* {similar?.map((g) => ( */}
-          {/* // <p>{g.name}</p> */}
-          <SimilarGames similar={similar} name={name}/>
-        {/* ))} */}
+        <SimilarGames similar={similar} name={name} />
       </div>
     </div>
   );

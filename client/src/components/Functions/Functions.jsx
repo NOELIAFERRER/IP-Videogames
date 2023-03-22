@@ -1,15 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+//redux
 import {
-  getAllGames,
-  // getGenres,
   getGamesByGenre,
   filterGames,
   sortGames,
   sortGamesByRating,
 } from "../../redux/actions";
-
+//estilos
 import styles from "../Functions/Functions.module.css";
 
 const Functions = ({ setCurrentPage }) => {
