@@ -1,14 +1,19 @@
 .pages {
-  margin: 1rem;
+  /* margin: 1rem; */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
+
+/* .pages ul {
+  align
+} */
 
 .btn {
   width: 2rem;
   height: 2rem;
   padding: 0.5rem;
-  margin: 1rem 0.3rem 0.3rem 0.3rem;
+  margin: 0.3rem;
   border-radius: 1rem;
   background: linear-gradient(315deg, #352929, #111111);
   box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;

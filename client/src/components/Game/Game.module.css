@@ -58,3 +58,25 @@
   border-radius: 0.6rem;
   margin: 0.1rem;
 }
+
+@media only screen and (max-width: 400px) {
+  .container {
+    width: 80%;
+    /* height: auto; */
+    min-height: 12rem;
+    max-height: 12rem;
+    font-size: 80%;
+  }
+
+  .container img {
+    max-height: 5rem;
+    min-height: 5rem;
+
+  }
+
+  .genre {
+    /* padding: 5%; */
+    margin: 0.5%;
+    font-size: 80%;
+  }
+}

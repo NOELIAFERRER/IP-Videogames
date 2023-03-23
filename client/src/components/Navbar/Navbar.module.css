@@ -74,7 +74,8 @@
 
 .input {
   width: 70%;
-  height: 55px;
+  height: 2.3rem;
+  max-height: 2.3rem;
   border-top-left-radius: 17px;
   border-bottom-left-radius: 17px;
   border-color: #ffedc6;
@@ -85,7 +86,8 @@
 
 .btn {
   width: 80px;
-  height: 60px;
+  height: 2.8rem;
+  max-height: 2.8rem;
   border-top-right-radius: 17px;
   border-bottom-right-radius: 17px;
   background: linear-gradient(315deg, #352929, #111111);
@@ -107,4 +109,14 @@
   /* box-shadow: 5px 5px 10px #78201f, -5px -5px 10px #301313; */
   color: black;
   /* transition: ease-out 0.5s; */
+}
+
+
+@media only screen and (max-width: 400) {
+  .input {
+    min-height: 2.1rem;
+  }
+  .btn {
+    min-height: 2.5rem;
+  }
 }

@@ -1,4 +1,7 @@
    .select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
    }
   
@@ -37,4 +40,11 @@
     padding-left: 20px;
     /* text-align: center; */
     /* position: relative; */
+  }
+
+  @media only screen and (max-width: 400px){
+    .select select{
+      width: 20%;
+      height: 2rem;
+    }
   }

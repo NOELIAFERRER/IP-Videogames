@@ -43,9 +43,9 @@ const Home = () => {
         />
       {/* </div> */}
       <div className={styles.body}>
-        {/* <div className={styles.selectors}> */}
+        <div>
           <Functions setCurrentPage={setCurrentPage} />
-        {/* </div> */}
+        </div>
 
         {/* <br /> */}
         <div className={styles.games}>

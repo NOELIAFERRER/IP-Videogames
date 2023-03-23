@@ -1,36 +1,37 @@
+
 .container {
   background-image: url("../../../public/images/home-background.jpg");
   background-size: cover;
   background-attachment: fixed;
   width: 100vw;
-  display: grid;
-  grid-template-columns: 4;
-  align-items: center;
-  display: grid;
-  /* grid-template-rows: 10px auto; */
-  /* grid-template-columns: 20px auto; */
+  /* display: grid; */
+  /* grid-template-columns: 4; */
   justify-content: center;
+  align-items: center;
 }
 
+
+
 /* .pages { */
-.container Pagination {
+/* .container Pagination { */
   /* background-color: greenyellow;  */
-  width: 100vw;
+  /* width: 100vw;
   grid-column: 1/4;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: center; */
+/* } */
 
 .body {
      /* background-color: blue; */
      width: 94vw;
      height: auto;
      display: grid;
-     grid-auto-rows: auto;
+     /* grid-auto-rows: auto; */
      grid-template-columns: 12rem auto;
      /* margin: 0 40px 0 40px; */
      justify-content: stretch;
 }
+
 
 /* .selectors { */
 .body Functions {
@@ -55,9 +56,28 @@
   align-items: center;
 }
 
+
 .gameBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 1rem;
+}
+
+
+@media only screen and (max-width: 400px){
+  /* .container {
+
+    grid-template-rows: auto;
+  } */
+
+  .body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .games{
+    grid-template-columns: auto auto;
+  }
 }
