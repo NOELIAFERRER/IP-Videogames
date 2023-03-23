@@ -1,6 +1,7 @@
 .container {
   background-image: url("../../../public/images/home-background.jpg");
   background-size: cover;
+  background-attachment: fixed;
   width: 100vw;
   display: grid;
   grid-template-columns: 4;
@@ -21,16 +22,14 @@
 }
 
 .body {
-  /* background-color: blue; */
-  width: 94vw;
-  display: grid;
-  grid-template-columns: 200px auto;
-  /* margin: 0 40px 0 40px; */
-  justify-content: stretch;
-  /* padding-right: 30px;
-  padding-left: 30px; */
-  /* gap: 8px; */
-  /* justify-content: space-evenly */
+     /* background-color: blue; */
+     width: 94vw;
+     height: auto;
+     display: grid;
+     grid-auto-rows: auto;
+     grid-template-columns: 12rem auto;
+     /* margin: 0 40px 0 40px; */
+     justify-content: stretch;
 }
 
 /* .selectors { */
@@ -47,12 +46,11 @@
   background-color: #ffedc63b;
   /* background-color: rgba(0, 0, 255, 0.481); */
   /* padding: 20px; */
-  gap: 1rem;
+  gap: 24 rem;
   /* padding: 3%; */
   /* width: auto; */
   display: grid;
-  grid-auto-rows: 24rem;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%,16rem), 1fr));
   justify-content: center;
   align-items: center;
 }

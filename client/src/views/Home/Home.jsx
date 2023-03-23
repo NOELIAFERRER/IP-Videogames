@@ -65,6 +65,11 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <Pagination
+          gamesXPage={gamesXPage}
+          games={games.length}
+          paging={paging}
+        />
     </div>
   );
 };

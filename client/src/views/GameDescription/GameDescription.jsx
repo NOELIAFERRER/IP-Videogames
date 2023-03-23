@@ -44,7 +44,9 @@ const GameDescription = (props) => {
 
   return (
     <div className={styles.container}>
+
       <Details
+        className={styles.details}
         key={id}
         image={image}
         name={name}
@@ -55,7 +57,7 @@ const GameDescription = (props) => {
         platforms={platforms}
       />
 
-      <div>
+      <div className={styles.gameBox}>
         <SimilarGames similar={similar} name={name} />
       </div>
     </div>

@@ -1,0 +1,10 @@
+/* .container {
+    margin: 3rem;
+    padding: 5rem;
+} */
+
+.games {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
