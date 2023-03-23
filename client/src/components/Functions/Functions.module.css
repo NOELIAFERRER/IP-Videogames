@@ -1,5 +1,5 @@
    .select {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     position: relative;
@@ -43,6 +43,9 @@
   }
 
   @media only screen and (max-width: 400px){
+    .select{
+    display: flex;
+    }
     .select select{
       width: 20%;
       height: 2rem;

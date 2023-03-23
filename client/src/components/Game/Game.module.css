@@ -61,18 +61,21 @@
 
 @media only screen and (max-width: 400px) {
   .container {
-    width: 80%;
+    margin: 0.5rem;
+    /* width: 50%; */
+    width: 70%;
     /* height: auto; */
-    min-height: 12rem;
+    height: 22rem;
     max-height: 12rem;
     font-size: 80%;
+    border-radius: 1rem;
   }
 
   .container img {
     max-height: 5rem;
-    min-height: 5rem;
-
+    min-height: 5rem;    
   }
+ 
 
   .genre {
     /* padding: 5%; */

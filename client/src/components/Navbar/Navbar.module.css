@@ -5,13 +5,18 @@
   /* padding-top: 40px;
   padding-bottom: 40px; */
   width: 100vw;
-  
-  height: 18vh;
+
+  height: 15rem;
   display: grid;
-  grid-template-columns: auto 70%; 
-  justify-content: space-evenly;  
+  grid-template-columns: auto 70%;
+  justify-content: space-evenly;
   align-items: center;
 }
+
+/* .links {
+  display: flex;
+  flex-direction: row;
+} */
 
 .navigate {
   /* grid-row: 1/2; */
@@ -81,7 +86,6 @@
   border-color: #ffedc6;
   background-color: #f48e8e;
   text-align: left;
- 
 }
 
 .btn {
@@ -93,8 +97,8 @@
   background: linear-gradient(315deg, #352929, #111111);
   color: #ffedc6;
   font-style: bold;
-  cursor: pointer; 
-  font-size: 12px;
+  cursor: pointer;
+  font-size: 90%;
   font-family: Helvetica;
   text-align: center;
 }
@@ -111,12 +115,24 @@
   /* transition: ease-out 0.5s; */
 }
 
+@media only screen and (max-width: 400px) {
+  .container{
+    height: 8rem;
+    display: flex;
+    flex-direction: column;    
+  }
 
-@media only screen and (max-width: 400) {
+  .links {
+      display: flex;
+      align-self: self-start;    
+  }
+  
   .input {
-    min-height: 2.1rem;
+    height: 1.8rem;
+    max-height: 1.8rem;
   }
   .btn {
-    min-height: 2.5rem;
+    height: 2.1rem;
+    max-height: 2.1rem;
   }
 }
