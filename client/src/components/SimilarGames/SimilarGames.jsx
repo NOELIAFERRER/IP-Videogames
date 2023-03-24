@@ -8,11 +8,12 @@ const SimilarGames = ({ similar, name }) => {
   // ordeno alfabéticamente los nombres de todos los juegos similares
   const gamesName = similar
     ?.map((el) => el.name)
-    .sort((a, b) => {
-      if (a.toLowerCase() > b.toLowerCase()) return 1;
-      if (a.toLowerCase() < b.toLowerCase()) return -1;
-      else return 0;
-    });
+    .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+  // .sort((a, b) => {
+  //   if (a.toLowerCase() > b.toLowerCase()) return 1;
+  //   if (a.toLowerCase() < b.toLowerCase()) return -1;
+  //   else return 0;
+  // });
 
   // elimino duplicados
   const gamesNameFilter = [...new Set(gamesName)];
@@ -47,17 +48,20 @@ const SimilarGames = ({ similar, name }) => {
   console.log("suggestGames=>", suggestedGames);
 
   return (
-    <div className={styles.container}>
-      {suggestedGames?.map((el) => (
-        <div className={styles.games}>
-          <Game
-            image={el.image}
-            name={el.name}
-            rating={el.rating}
-            genres={el.genres}
-          />
-        </div>
-      ))}
+    <div>
+      <h3>Juegos similares que podrían gustarte...</h3>
+      <div className={styles.container}>
+        {suggestedGames?.map((el) => (
+          <div className={styles.games}>
+            <Game
+              image={el.image}
+              name={el.name}
+              rating={el.rating}
+              genres={el.genres}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

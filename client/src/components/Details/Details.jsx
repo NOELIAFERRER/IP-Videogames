@@ -12,11 +12,11 @@ const Details = ({
   platforms,
 }) => {
   return (
-    <div>
+    // <div>
       <div className={styles.description}>
         <div className={styles.header}>
           <img
-            className={styles.img}
+            // className={styles.img}
             src={image}
             alt="portada del videojuego"
           />
@@ -53,7 +53,7 @@ const Details = ({
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

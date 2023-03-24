@@ -1,18 +1,25 @@
 .description {
-  width: 50vw;
+  /* width: 50vw;
   min-width: 400px;
   max-width: 800px;
   height: auto;
   margin: 10px;
   padding: 30px;
-  border-radius: 36px;
-  background: #363636c0;
-  box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0;
+  border-radius: 36px; */
+  width: 50%;
+  min-width: 20rem;
+  max-width: 80rem;
+  height: auto;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  /* background: #363636c0; */
+  /* box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0; */
   background-color: #121212c0;
   color: #ffedc6;
   font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler,
     "Arial Narrow Bold", sans-serif;
-  font-size: 20px;
+  font-size: 80%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -22,20 +29,25 @@
 .header {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  /* width: 90%; */
+  gap: 2rem;
   justify-content: center;
 }
 
-.img {
-  width: 380px;
-  height: 280px;
-  display: flex;
+.header img {
+  /* width: 380px;
+  height: 280px; */
+  width: 45vw;
+  margin-top: 1rem;
+  height: auto;
+  min-width: 20rem;
+  /* display: flex;
   align-self: self-start;
-  border-radius: 30px;
+  border-radius: 1rem;
   text-align:center;
-  font-size: 14px; 
-  background: linear-gradient(145deg, #422b2b, #483232);
-  box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0;
+  /* font-size: 14px;  */
+  /* background: linear-gradient(145deg, #422b2b, #483232);
+  box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #121212c0; */ 
 }
 
 .name {
@@ -43,7 +55,7 @@
   /* margin: 10px; */
   display: flex;
   flex-direction: column;
-  font-size: 30px;
+  font-size: 120%;
   font-family: sans-serif;
   font-weight: bold;
   /* font-stretch: ultra-expanded; */
@@ -53,10 +65,12 @@
 .title {
   margin-top: 16px;
   margin-bottom: 8px;
+  font-size: 200%;
+
 }
 
 .info {
-  font-size: 80%;
+  /* font-size: 80%; */
   margin: 6px;
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +88,7 @@
 }
 
 .released {
-  font-size: 16px;
+  /* font-size: 80%; */
   gap: 10px;
   display: flex;
   flex-direction: row;
@@ -92,7 +106,7 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  font-size: 16px;
+  /* font-size: 80%; */
   font-family: helvetica;
   align-items: center;
   flex-wrap: wrap;

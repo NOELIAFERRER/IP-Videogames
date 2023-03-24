@@ -3,7 +3,7 @@
  background-size: cover;
     width: 100vw;
     height: auto;
-    padding: 40px;
+    /* padding: 40px; */
     display: grid;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 .gameBox {
+  width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%,16rem), 1fr));
-
+  /* grid-template-columns: repeat(auto-fill, minmax(min(100%,16rem), 1fr)); */
 }

@@ -93,20 +93,20 @@ const rootReducer = (state = initialState, action) => {
       };
     case SORT_GAMES:
          const gamesUpdated = [...state.games];
-         let gamesSorted = [];
+         let gamesSorted = 
          action.payload === 'ascendent'
-         ? gamesSorted = gamesUpdated.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+         ? gamesUpdated.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
          : action.payload === 'descendent'
-         ? gamesSorted =  gamesUpdated.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
-         : gamesSorted = gamesUpdated;
-    
+         ? gamesUpdated.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
+         : gamesUpdated;
+    // console.log('gamesUpdated=>',gamesUpdated)
       return {
         ...state,
         games: gamesSorted
       };
     case SORT_GAMES_BY_RATING:
         const gamesUpd = [...state.games];
-        let gamesSortedByRating = [];
+        let gamesSortedByRating = 
         action.payload === 'high'
         ? gamesUpd.sort((a, b) => b.rating - a.rating)
         : action.payload === 'low'

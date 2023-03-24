@@ -1,6 +1,7 @@
 .container {
   background-color: #121212e7;
   width: 16rem;
+  min-width:8.5rem;
   height: 19rem;
   margin: 1rem;
   padding: 1rem;
@@ -59,11 +60,12 @@
   margin: 0.1rem;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 740px) {
   .container {
     margin: 0.5rem;
     /* width: 50%; */
     width: 70%;
+    min-width: 8.5rem;
     /* height: auto; */
     height: 22rem;
     max-height: 12rem;
