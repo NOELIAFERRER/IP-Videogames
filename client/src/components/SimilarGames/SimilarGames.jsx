@@ -48,9 +48,9 @@ const SimilarGames = ({ similar, name }) => {
   console.log("suggestGames=>", suggestedGames);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h3>Juegos similares que podrían gustarte...</h3>
-      <div className={styles.container}>
+      <div className={styles.box}>
         {suggestedGames?.map((el) => (
           <div className={styles.games}>
             <Game

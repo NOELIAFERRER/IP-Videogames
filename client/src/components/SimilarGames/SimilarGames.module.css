@@ -2,15 +2,27 @@
     /* margin: 3rem; */
     width: 100%;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(50%, 1fr)); */
     align-items: center;
     justify-items: center;
     /* padding: 5rem; */
 }
 
+.box {
+  /* margin: 3rem; */
+  width: 100%;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%,17rem), 1fr));
+  grid-gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  /* padding: 5rem; */
+}
+
 .games {
+  padding: 0px;
   /* display: flex;
   flex-direction: row; */
-  max-width: 20rem;
+  /* max-width: 20rem; */
   /* flex-wrap: wrap; */
 }
