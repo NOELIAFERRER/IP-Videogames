@@ -1,9 +1,11 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+//componentes
+import Rating from '../Rating/Rating'
 //estilos
 import styles from "../Game/Game.module.css";
 
 const Game = ({ image, name, id, genres, rating }) => {
+
   return (
     <div className={styles.container}>
       <div>
@@ -19,7 +21,10 @@ const Game = ({ image, name, id, genres, rating }) => {
         <div>{name}</div>
         <div>
           {/* <Link to={`/games/details/${id}`} className={styles.titles}>{name}</Link> */}
-          <div className={styles.rating}>{rating}</div>
+          <div className={styles.rating}>
+            <Rating rating={rating} />
+            {/* {rating} */}
+            </div>
         </div>
       </div>
       <div className={styles.genres}>

@@ -117,6 +117,9 @@
 
 @media only screen and (max-width: 400px) {
   .container{
+    /* background-size: contain; */
+    background-clip: content-box;
+    background-repeat: no-repeat;
     height: 8rem;
     display: flex;
     flex-direction: column;    

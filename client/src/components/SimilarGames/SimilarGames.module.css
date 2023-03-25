@@ -9,6 +9,7 @@
 }
 
 .box {
+  /* padding: 0px; */
   /* margin: 3rem; */
   width: 100%;
   display:grid;
@@ -25,4 +26,10 @@
   flex-direction: row; */
   /* max-width: 20rem; */
   /* flex-wrap: wrap; */
+}
+
+@media only screen and(max-width: 400px){
+  .box{   
+   grid-template-columns: auto auto;
+  }
 }

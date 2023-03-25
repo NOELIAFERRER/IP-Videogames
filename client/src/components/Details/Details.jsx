@@ -1,4 +1,5 @@
 import React from "react";
+import Rating from "../Rating/Rating";
 import styles from "./Details.module.css";
 
 const Details = ({
@@ -23,7 +24,10 @@ const Details = ({
           {/* <div className={styles.title}> */}
           <div className={styles.name}>
             <div className={styles.title}>{name}</div>
-            <div>{rating}</div>
+            <div>
+              <Rating rating={rating}/>
+              {/* {rating} */}
+              </div>
 
             <div className={styles.info}>
               {genres?.map((g) => (

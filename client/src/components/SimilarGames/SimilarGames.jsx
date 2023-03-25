@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+//icons
 //componentes
 import Game from "../Game/Game";
 //estilos
@@ -53,12 +55,14 @@ const SimilarGames = ({ similar, name }) => {
       <div className={styles.box}>
         {suggestedGames?.map((el) => (
           <div className={styles.games}>
+             <Link to={`/games/details/${el.id}`}>
             <Game
               image={el.image}
               name={el.name}
               rating={el.rating}
               genres={el.genres}
             />
+            </Link>
           </div>
         ))}
       </div>
