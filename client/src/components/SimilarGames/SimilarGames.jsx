@@ -60,7 +60,7 @@ const SimilarGames = ({ similar, name }) => {
               image={el.image}
               name={el.name}
               rating={el.rating}
-              genres={el.genres}
+              // genres={el.genres}
             />
             </Link>
           </div>

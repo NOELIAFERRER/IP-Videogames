@@ -1,29 +1,53 @@
-.landing {
-    background-image: url('../../../public/images/landing.jpg');
-    background-size:cover;
-    height: 100vh;
-    width: 100vw;
-    background-repeat: no-repeat;
-    /* background-size: contain; */
-    color:antiquewhite
+.container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10rem;
+}
+.image {
+  background-image: url("../../../public/images/landing.png");
+  background-size: cover;
+  width: 100%;
+  height: 18rem;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: monospace;
+  font-style: oblique;
+  color: #4ccbf199;
+  font-size: 120%;
 }
 
-.btn {
-    width: 220px;
-    height: 3px;   
-    margin: 280px 0px;   
-      
-    border-radius: 8px;
-    border-color: #fcfcfc;
-    background-color: hsla(0, 0%, 4%, 0.466);;    
-    color: #ffffff;
-    font-size: 24px;
-    font-family: Helvetica;
-    font-weight: 200;
-    /* font-feature-settings:"abvf"; */
+.image button {
+  align-self: center;
 }
 
-.btn:hover {
-    scale:calc(0.8);
-    transition: 1s;
+.intro {
+  margin: 0 5rem 0 5rem;
+  font-size: 80%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: monospace;
+  text-align: justify;
+}
+
+.container button {
+  color: white;
+  width: 7rem;
+  height: 1.8rem;
+  border-radius: 0.3rem;
+  background-color: rgba(67, 188, 239, 0.461);
+  border: #efefef94 double 4px;
+  font-family: monospace;
+  font-size: 120%;
+  font-style: italic;
+}
+
+.container button:hover {
+  scale: calc(0.8);
+  transition: 1s;
 }
