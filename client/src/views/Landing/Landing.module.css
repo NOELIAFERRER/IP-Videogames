@@ -4,30 +4,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10rem;
+  padding-bottom: 5rem;
 }
 .image {
   background-image: url("../../../public/images/landing.png");
   background-size: cover;
   width: 100%;
-  height: 18rem;
+  min-height: 16rem;
+  /* height: 28rem; */
+  /* max-height: 12rem; */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   font-family: monospace;
   font-style: oblique;
   color: #4ccbf199;
   font-size: 120%;
 }
 
-.image button {
-  align-self: center;
+.image h3 {
+ margin-top: 0rem;
 }
 
 .intro {
   margin: 0 5rem 0 5rem;
-  font-size: 80%;
+  /* padding-top: 5rem; */
+  font-size: 110%;
   justify-content: center;
   align-items: center;
   color: white;
@@ -35,6 +38,9 @@
   text-align: justify;
 }
 
+.intro h3{
+    align-self: center;
+}
 .container button {
   color: white;
   width: 7rem;

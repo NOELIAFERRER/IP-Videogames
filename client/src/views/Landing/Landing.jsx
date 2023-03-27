@@ -12,10 +12,13 @@ class Landing extends React.Component {
       <div className={styles.container}>
         {/* <div className={styles.landing}> */}
         <div className={styles.image}>
-          <h3>VIDEOGAME API INTRO</h3>
+          {/* <h3>VIDEOGAME API INTRO</h3> */}
         </div>
 
         <div className={styles.intro}>
+          <h3>VIDEOGAME API INTRO</h3>
+
+          <p>Este proyecto consiste en una API de consulta sobre videojuegos.</p>
           <p>
             Dentro de las funcionalidades se pueden realizar búsquedas de juegos
             por nombre, en donde se obtienen resultados de acuerdo a las
