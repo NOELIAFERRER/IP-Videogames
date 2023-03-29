@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+//redux
 import { useSelector, useDispatch } from "react-redux";
-import Details from "../../components/Details/Details";
-// import GameDetail from "../../components/GameDetail/GameDetail";
-// import Select from 'react-select'
 import { getGenres, getPlatforms } from "../../redux/actions";
+//sytles
 import styles from "../Form/Form.module.css";
 
 const Form = () => {
-  // const allGames = useSelector((state) => state.allGames);
   const genres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.platforms);
   const dispatch = useDispatch();
@@ -40,8 +38,6 @@ const Form = () => {
       errorForm.name = "Se debe ingresar un nombre válido";
     if (input.description.length < 10 || typeof input.description !== "string")
       errorForm.description = "Se deben ingresar al menos 20 caracteres";
-    // const regExp = /^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/
-    // if(!input.released.match(regExp)) errorForm.released = 'Se debe ingresar YYYY-MM-DD'
     const dateSplited = input.released.split("-");
     console.log(input.released);
     console.log(dateSplited);
@@ -84,7 +80,6 @@ const Form = () => {
   const changeGenresHandler = (event) => {
     setInput({
       ...input,
-      // [event.target.name]: [...new Set([...input.genres, event.target.value])] // pruebo haciendo un array!!
       [event.target.name]: [...input.genres, event.target.value],
     });
     console.log(event.target.value);
@@ -112,7 +107,6 @@ const Form = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     await axios.post("/videogames", input);
-    // dispatch(addGame())
     console.log(input);
     setInput({
       name: "",

@@ -8,7 +8,6 @@ export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const SORT_GAMES = "SORT_GAMES";
 export const SORT_GAMES_BY_RATING = "SORT_GAMES_BY_RATING";
 export const GET_GAMES_BY_GENRE = "GET_GAMES_BY_GENRE";
-// export const GET_GAMES_BY_STATUS = 'GET_GAMES_BY_STATUS';
 export const FILTER_GAMES = "FILTER_GAMES";
 export const ADD_GAME = "ADD_GAME";
 export const RESET_DETAILS = "RESET_DETAILS";
@@ -19,7 +18,6 @@ export const getAllGames = () => {
     try {
       const response = await axios.get('/videogames');
       const allGames = response.data;
-      // console.log(allGames)
       dispatch({
         type: GET_ALL_GAMES,
         payload: allGames,
@@ -61,7 +59,6 @@ export const getGameDetails = (id) => {
         `/videogames/${id}`
       );
       const gameDetail = response.data;
-      // console.log(gameDetail);
       dispatch({
         type: GET_GAME_DETAILS,
         payload: gameDetail,
@@ -207,19 +204,3 @@ export const resetGameDetails = () => {
   };
 };
 
-
-// export const getSimilarGames = (genres) => {
-//   return (dispatch) => {
-//     try {
-//       dispatch({
-//         type: GET_SIMILAR_GAMES,
-//         payload: genres     
-//       })
-//     } catch (error) {
-//       dispatch({
-//         type: ERROR,
-//         payload: error        
-//       })      
-//     }
-//   }
-// }

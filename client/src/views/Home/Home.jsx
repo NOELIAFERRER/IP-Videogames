@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 // redux
 import { getAllGames } from "../../redux/actions";
-// import Videogames from './Videogames';
 //components
 import Pagination from "../../components/Pagination/Pagination";
 import Functions from "../../components/Functions/Functions";
 import Game from "../../components/Game/Game";
+//styles
 import styles from "../Home/Home.module.css";
 
 const Home = () => {
@@ -21,8 +21,6 @@ const Home = () => {
   const indexLastGame = currentPage * gamesXPage;
   const indexFirstGame = indexLastGame - gamesXPage;
   const currentGames = games.slice(indexFirstGame, indexLastGame);
-//   const currentGames = games.slice(0, 15);
-//   const currentGamess = games.slice(16, 30);
 
   const paging = (pageNumber) => {
     setCurrentPage(pageNumber);

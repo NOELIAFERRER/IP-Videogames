@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllGames,
   getGameDetails,
   resetGameDetails,
 } from "../../redux/actions";
+//components
 import Details from "../../components/Details/Details";
 import SimilarGames from "../../components/SimilarGames/SimilarGames";
+//sytles
 import styles from "./GameDescription.module.css";
 
 const GameDescription = (props) => {
   const gameId = props.match.match.params.id;
-  //preparo para los juegos similares
   const allGames = useSelector((state) => state.allGames);
 
   const gameDetail = useSelector((state) => state.gameDetail);
@@ -54,8 +56,7 @@ const GameDescription = (props) => {
         rating={rating}
         description={description}
         genres={genres}
-        platforms={platforms}
-      />
+        platforms={platforms}      />
 
       <div className={styles.gameBox}>
         <SimilarGames similar={similar} name={name} />

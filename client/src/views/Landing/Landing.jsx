@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+//styles
 import styles from "../Landing/Landing.module.css";
 
 class Landing extends React.Component {
