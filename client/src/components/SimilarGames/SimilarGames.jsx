@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//icons
-//componentes
+//components
 import Game from "../Game/Game";
-//estilos
+//styles
 import styles from "./SimilarGames.module.css";
 
 const SimilarGames = ({ similar, name }) => {
@@ -11,12 +10,6 @@ const SimilarGames = ({ similar, name }) => {
   const gamesName = similar
     ?.map((el) => el.name)
     .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-  // .sort((a, b) => {
-  //   if (a.toLowerCase() > b.toLowerCase()) return 1;
-  //   if (a.toLowerCase() < b.toLowerCase()) return -1;
-  //   else return 0;
-  // });
-
   // elimino duplicados
   const gamesNameFilter = [...new Set(gamesName)];
 
@@ -60,7 +53,7 @@ const SimilarGames = ({ similar, name }) => {
               image={el.image}
               name={el.name}
               rating={el.rating}
-              // genres={el.genres}
+              genres={el.genres}
             />
             </Link>
           </div>

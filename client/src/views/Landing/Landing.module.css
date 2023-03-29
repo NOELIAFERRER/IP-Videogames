@@ -54,6 +54,6 @@
 }
 
 .container button:hover {
-  scale: calc(0.8);
-  transition: 1s;
+  scale: calc(1.3);
+  /* transition: 0.5s; */
 }

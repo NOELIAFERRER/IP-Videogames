@@ -7,11 +7,10 @@ import {
   sortGames,
   sortGamesByRating,
 } from "../../redux/actions";
-//estilos
+//styles
 import styles from "../Functions/Functions.module.css";
 
 const Functions = ({ setCurrentPage }) => {
-  const games = useSelector((state) => state.games);
   const allGames = useSelector((state) => state.allGames);
   const dispatch = useDispatch();
 
@@ -33,7 +32,6 @@ const Functions = ({ setCurrentPage }) => {
   const filterHandler = (event) => {
     event.preventDefault();
     dispatch(filterGames(event.target.value));
-
     setCurrentPage(1);
   };
 
@@ -92,6 +90,7 @@ const Functions = ({ setCurrentPage }) => {
           <option value={`${el}`}>{el.toUpperCase()}</option>
         ))}
       </select>
+
       <select
         className={styles.bars}
         name="filter"
