@@ -16,11 +16,9 @@ const getApiGames = async (name) => {
         name: game.name,
         released: game.released,
         rating: game.rating,
-        // platforms: game.platforms?.map(p => p.platform.name).filter(p => p !== '').join(' | '),
         platforms: game.platforms
           ?.map((p) => p.platform.name)
           .filter((p) => p !== ""),
-        // genres: game.genres?.map(g => g.name).filter(g => g !== '').join(' | ')
         genres: game.genres?.map((g) => g.name).filter((g) => g !== ""),
       };
     });
@@ -46,49 +44,8 @@ const getDbGames = async () => {
       platforms: g.platforms.map((p) => p.name).filter((p) => p !== ""),
     };
   });
-  console.log(dbGamesName);
   return dbGamesName;
 };
-
-// let dbGamesClean= dbGames.forEach(game => {
-//   game.genres = game.genres.map(g => g.name).filter(g=> g !== '').join(' | ')
-// })
-// return dbGamesClean
-// console.log(dbGames)
-// .then(console.log(dbGames.genres))
-
-// let dbGamesMapped = dbGames.map(el => el)
-// return dbGamesMapped
-
-// return await Videogame.findAll({
-
-// let dbGames = await Videogame.findAll({ include: [Genre] })
-//   let mappedGames = dbGames.forEach(C => {
-//     // C.source = "Created",
-//     C.genres = C.genres.map((genre) => genre.name).filter(p => p != null).join(', ')
-//     return mappedGames
-//   })
-// }
-
-//     // include: {
-//     //   attributes: ['image', 'name', 'released', 'rating', 'genres', 'platforms']
-//     // },
-
-//   include: {
-//     model: Genre,
-//     // attributes: ['name']
-//     through: {attributes: []}
-//   },
-//     include: {
-//     model: Platform,
-//     // attributes: ['name'],
-//     through: {
-//       attributes: [],
-//     }
-//   }
-// }
-// )
-// }
 
 const getAllGames = async () => {
   let apiGames = await getApiGames();
@@ -98,7 +55,6 @@ const getAllGames = async () => {
     if (a < b) return -1;
     else return 0;
   });
-  console.log(allGames);
   return allGames;
 };
 
@@ -108,8 +64,6 @@ const getApiGamesByName = async (name) => {
     let apiData = await axios.get(
       `https://api.rawg.io/api/games?search=${name}&key=${RAWG_APIKEY}&page=${i}`
     );
-    // if (!name) { return apiGamesByName }
-    // else {
     let apiGame = apiData.data.results.map((game) => {
       return {
         id: game.id,
@@ -117,16 +71,13 @@ const getApiGamesByName = async (name) => {
         name: game.name,
         released: game.released,
         rating: game.rating,
-        platforms: game.platforms.map(
-          (plat) => plat.platform.name /*&& plat.platform.id*/
-        ),
-        genres: game.genres.map((game) => game.name /*&& game.id*/),
+        platforms: game.platforms.map((plat) => plat.platform.name),
+        genres: game.genres.map((game) => game.name),
       };
     });
     apiGamesByName = [...apiGamesByName, ...apiGame];
   }
   return apiGamesByName;
-  // }
 };
 
 const getDbGamesByName = async (name) => {
@@ -167,49 +118,44 @@ const getGamesByName = async (name) => {
 };
 
 const getApiGameById = async (id) => {
-  // const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-  // if (regexExp.test(id) === true) {
-  //   // if(id.length > 10){
   if (id && !isNaN(id)) {
     let apiData = await axios.get(
       `https://api.rawg.io/api/games/${id}?key=${RAWG_APIKEY}`
     );
     let result = apiData.data;
-    console.log(result);
     if (result.id === parseInt(id))
-     return {
+      return {
         image: result.background_image,
-        name: result.name,        
+        name: result.name,
         genres: result.genres.map((g) => g.name),
         description: result.description.replace(/<[^>]*>?/g, ""),
         released: result.released,
         rating: result.rating,
         platforms: result.platforms.map((plat) => plat.platform.name),
-      };        
+      };
   } else {
     let dbGameById = await Videogame.findOne({
       where: {
         id: id,
       },
-      include: [        
+      include: [
         { model: Genre, attributes: ["name"], through: { attributes: [] } },
-              { model: Platform, attributes: ["name"], through: { attributes: [] } },
+        { model: Platform, attributes: ["name"], through: { attributes: [] } },
       ],
     });
-    console.log("dbGameById:", dbGameById);
     const game = dbGameById;
-    if(game.id === id) {
-  return {
-      id: game.id,
-      image: game.image,
-      name: game.name,
-      genres: game.genres?.map((g) => g.name),
-      description: game.description,
-      released: game.released,
-      rating: game.rating,
-      platforms: game.platforms.map((p) => p.name),
-    }    
-  }
+    if (game.id === id) {
+      return {
+        id: game.id,
+        image: game.image,
+        name: game.name,
+        genres: game.genres?.map((g) => g.name),
+        description: game.description,
+        released: game.released,
+        rating: game.rating,
+        platforms: game.platforms.map((p) => p.name),
+      };
+    }
   }
 };
 
@@ -238,7 +184,6 @@ const addGame = async (
   });
   //una vez que se encontraron y crearon los géneros que no estaban los guardo en una constante
   const gameGenres = await Promise.all(genresCheck);
-  console.log(gameGenres);
 
   //recorro el array de plataformas esperando que cada plataforma se compruebe que existe, y si no existe se cree
   const platformCheck = platforms.map(async (p) => {

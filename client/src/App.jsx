@@ -10,8 +10,8 @@ import Footer from './components/Footer/Footer';
 //styles
 import styles from './App.modules.css';
 
-// axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 
 function App() {
