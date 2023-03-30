@@ -1,21 +1,17 @@
-// import './App.css';
-import Home from './views/Home/Home';
-
-import Form from './views/Form/Form';
-import Landing from './views/Landing/Landing';
-
 import { Route } from 'react-router-dom';
-// import Game from './components/Game';
-// import Details from './components/Details';
-// import { Email } from './components/Email';
-import styles from './App.modules.css';
 import axios from 'axios';
+//components
+import Landing from './views/Landing/Landing';
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+import Home from './views/Home/Home';
+import Form from './views/Form/Form';
 import GameDescription from './views/GameDescription/GameDescription';
+import Footer from './components/Footer/Footer';
+//styles
+import styles from './App.modules.css';
 
-// axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://ip-videogames-production.up.railway.app/';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 
 function App() {
