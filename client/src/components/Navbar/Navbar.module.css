@@ -2,10 +2,7 @@
   background-image: url("../../../public/images/navbar11.jpg");
   background-size: cover;
   margin-top: 3px;
-  /* padding-top: 40px;
-  padding-bottom: 40px; */
   width: 100vw;
-
   height: 15rem;
   display: grid;
   grid-template-columns: auto 70%;
@@ -13,13 +10,7 @@
   align-items: center;
 }
 
-/* .links {
-  display: flex;
-  flex-direction: row;
-} */
-
 .navigate {
-  /* grid-row: 1/2; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,10 +22,8 @@
   border: none;
   border-radius: 10px;
   transition: 0.5s;
-  /* background: #1e1e1e; */
   background: none;
   color: rgb(234, 255, 47);
-  /* box-shadow: 0 0 10px #363636, inset 0 0 10px #363636; */
 }
 
 .navigate:hover {
@@ -68,12 +57,8 @@
 }
 
 .searchBar {
-  /* grid-column: 2; */
   display: flex;
   flex-direction: row;
-
-  /* row-gap: 10px; */
-  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -110,30 +95,28 @@
   border-top-right-radius: 17px;
   border-bottom-right-radius: 17px;
   background: linear-gradient(145deg, #ff4947, #e63d3b);
-  /* box-shadow: 5px 5px 10px #78201f, -5px -5px 10px #301313; */
   color: black;
-  /* transition: ease-out 0.5s; */
 }
 
 @media only screen and (max-width: 400px) {
-  .container{
-    /* background-size: contain; */
+  .container {
     background-clip: content-box;
     background-repeat: no-repeat;
     height: 8rem;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
   }
 
   .links {
-      display: flex;
-      align-self: self-start;    
+    display: flex;
+    align-self: self-start;
   }
-  
+
   .input {
     height: 1.8rem;
     max-height: 1.8rem;
   }
+  
   .btn {
     height: 2.1rem;
     max-height: 2.1rem;

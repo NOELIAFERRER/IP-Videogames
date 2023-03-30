@@ -1,53 +1,50 @@
-   .select {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    position: relative;
-   }
-  
-   .select select {
-    width: 10rem;
-    height: 2.6rem;
-    margin: 0.4rem;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    background: linear-gradient(315deg, #352929, #111111);
-    box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
-    color: #FFEDC6; 
-    transition: ease-out 0.5s;
-    cursor: pointer;
-    font-size: 80%;
-    font-family: Helvetica;
-    position: relative;
-  }
-  
-  .select select:hover {
-    border-radius: 17px;
-    background: linear-gradient(145deg, #ff4947, #e63d3b);
-    box-shadow: 5px 5px 10px #78201f, -5px -5px 10px #301313;
-    color: black;
-    
-    font-style: bold;
-  }
+.select {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-  .select option {
-    background-color: rgb(80, 79, 79);
-    color: #FFEDC6; 
-    height: 34px;
-    width: 160px;
-    border-radius: 14px;
-    margin-left: 30px;
-    padding-left: 20px;
-    /* text-align: center; */
-    /* position: relative; */
-  }
+.select select {
+  width: 10rem;
+  height: 2.6rem;
+  margin: 0.4rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background: linear-gradient(315deg, #352929, #111111);
+  box-shadow: -5px -5px 10px #6d4544, 5px 5px 10px #ffdfde;
+  color: #ffedc6;
+  transition: ease-out 0.5s;
+  cursor: pointer;
+  font-size: 80%;
+  font-family: Helvetica;
+  position: relative;
+}
 
-  @media only screen and (max-width: 740px){
-    .select{
+.select select:hover {
+  border-radius: 17px;
+  background: linear-gradient(145deg, #ff4947, #e63d3b);
+  box-shadow: 5px 5px 10px #78201f, -5px -5px 10px #301313;
+  color: black;
+
+  font-style: bold;
+}
+
+.select option {
+  background-color: rgb(80, 79, 79);
+  color: #ffedc6;
+  height: 34px;
+  width: 160px;
+  border-radius: 14px;
+  margin-left: 30px;
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 740px) {
+  .select {
     display: flex;
-    }
-    .select select{
-      width: 20%;
-      height: 2rem;
-    }
   }
+  .select select {
+    width: 20%;
+    height: 2rem;
+  }
+}
