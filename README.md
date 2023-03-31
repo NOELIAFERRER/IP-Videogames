@@ -1,9 +1,10 @@
+<h1 align="center">
+    Individual Project - Henry Videogames
+</h1>
 
-
-# Individual Project - Henry Videogames
 
 <p align="center">
-  <img height="200" src="./videogame.png" />
+  <img height="600" src="client/src/videogame.png"/>
 </p>
 
 Este proyecto consiste en una API de consulta sobre videojuegos.
@@ -19,7 +20,7 @@ Dentro de las funcionalidades se pueden:
 En caso requerir información más detallada de un juego en particular basta con pincharlo y se LINKEARÁ a la ficha con más detalle. Me pareció divertido incluir en esa sección descriptiva una lista de JUEGOS SIMILARES al consultado, siguiendo la lógica de encontrar aquellos juegos que mayor coincidencia de géneros tuviese, además de considerar similitudes con el título del juego.
 
 <p align="center">
-  <img height="200" src="./similar.png" />
+  <img height="600" src="client/src/similar.png" />
 </p>
 
 Toda la interfaz del usuario, con DISEÑO RESPONSIVE, está desarrollada con REACT y CSS puro.
@@ -34,3 +35,4 @@ El lenguaje: JAVASCRIPT, por supuesto!
 - [ ] Sequelize - Postgres
 - [ ] CSS
 
+Para ver el proyecto hacé click  <a href="https://ip-videogames.vercel.app/" target="_blank">acá </a>
