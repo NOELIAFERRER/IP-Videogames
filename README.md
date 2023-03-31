@@ -2,13 +2,10 @@
     Individual Project - Henry Videogames
 </h1>
 
-
+Este proyecto consiste en una API de consulta sobre videojuegos.
 <p align="center">
   <img height="600" src="client/src/videogame.png"/>
 </p>
-
-Este proyecto consiste en una API de consulta sobre videojuegos.
-
 Dentro de las funcionalidades se pueden:
 
 - Realizar búsquedas de juegos por nombre, en donde se obtienen resultados de acuerdo a las coincidencias con la consulta.
